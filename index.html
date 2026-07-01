@@ -914,7 +914,9 @@ const CAL_MONTH_DETAIL={
     {d:"13–14", tbc:true, kind:"shoot", nm:{en:"Aligners Symposium",ru:"Симпозиум по элайнерам"}, t:{en:"Nov 13–14 (Irvine). Confirm whether Jim appears / a home dinner is attached.",ru:"13–14 ноября (Ирвайн). Уточнить участие Джима / ужин в доме."}},
     {d:"~26 (Thu)", tbc:true, kind:"shoot", nm:{en:"Thanksgiving at the house (family)",ru:"День благодарения в доме (семья)"}, t:{en:"Jim off-duty among his children. Needs family consent — ask well in advance.",ru:"Джим вне работы, среди детей. Нужно согласие семьи — спросить заранее."}}
   ] },
-  12:{ intro:{en:"End of year — the target: a version chosen and a real shoot plan drafted before 2027.",ru:"Конец года — цель: выбрать версию и составить реальный съёмочный план до 2027-го."}, items:[] }
+  12:{ intro:{en:"End of year — the target: a version chosen and a real shoot plan drafted before 2027.",ru:"Конец года — цель: выбрать версию и составить реальный съёмочный план до 2027-го."}, items:[
+    {d:"later", tbc:true, kind:"prep", nm:{en:"Eric & Elden interviews — near the edit",ru:"Интервью с Эриком и Элденом — ближе к монтажу"}, t:{en:"Planned, but deliberately later — nearer the edit, once there is enough material to see which gaps, connections and directions must be worked through with them. For now: warn them, agree in principle, and gauge how they feel about appearing in the film.",ru:"Запланированы, но намеренно позже — ближе к монтажу, когда будет материал, чтобы увидеть, какие пробелы, связки и направления надо проработать именно с ними. Сейчас: предупредить, договориться в принципе и понять, как они относятся к участию в фильме."}}
+  ] }
 };
 
 const ARCHIVE_STAGES=[
@@ -973,7 +975,7 @@ const ARCHIVE_SOURCES=[
 // tag: have = in hand & usable · need = required, not found yet · unused = found, not placed in the edit yet
 const ARCHIVE_MATERIALS=[
   {tag:'have', kind:'photo', nm:{en:"~18 photo crops from “Constant Change” (1942–1980s, family + early labs)",ru:"~18 обрезков фото из «Constant Change» (1942–1980-е, семья + ранние лабы)"},
-   note:{en:"Real scanned photos, in hand: Jim's father (1942, CCC Utah camp), Jim at 15 and 18, his daughter Julie in 1973 with the Vegas birth house, Jim at 10 with Eileen/Barbara/Dorothy/his sister Luana (1976), his grandmother Marie Ellen Smith Brierly (1990), early labs (1983–84), his business card. Usable as-is for family and early-company beats.",ru:"Настоящие отсканированные фото, в наличии: отец Джима (1942, лагерь CCC в Юте), Джим в 15 и 18 лет, дочь Джули в 1973-м на фоне дома в Вегасе, где родился Джим, Джим в 10 лет с Эйлин/Барбарой/Дороти/сестрой Луаной (1976), бабушка Мари Эллен Смит Брайерли (1990), ранние лабы (1983–84), его визитка. Можно использовать как есть для семейных и ранне-корпоративных битов."}},
+   note:{en:"Real scanned photos, in hand: Jim's father (a 1942 portrait, and in the Civilian Conservation Corps — 1937, Utah), Jim at 12 / 15 / 18, his daughter Julie in 1973 with the Vegas birth house, Jim at 10 with Eileen, Barbara, Dorothy and his sister Luana (~1955), his grandmother Marie Ellen Smith Brierly (1990), early labs (1983–84), his business card. Usable as-is for family and early-company beats.",ru:"Настоящие отсканированные фото, в наличии: отец Джима (портрет 1942 и в Civilian Conservation Corps — 1937, Юта), Джим в 12 / 15 / 18, дочь Джули в 1973-м на фоне дома в Вегасе, где родился Джим, Джим в 10 лет с Эйлин, Барбарой, Дороти и сестрой Луаной (~1955), бабушка Мари Эллен Смит Брайерли (1990), ранние лабы (1983–84), его визитка. Можно использовать как есть для семейных и ранне-корпоративных битов."}},
   {tag:'need', kind:'photo', nm:{en:"The Newport Beach kidnapping-attempt police report",ru:"Полицейский отчёт о попытке похищения в Newport Beach"},
    note:{en:"Not located — would corroborate the kidnapping-attempt beat with a primary document rather than recollection alone.",ru:"Не найден — подтвердил бы бит о попытке похищения первичным документом, а не только воспоминанием."}},
   {tag:'need', kind:'marketing', nm:{en:"Military / Navy service records",ru:"Военные записи / записи ВМС"},
@@ -1138,7 +1140,7 @@ const SCENE_THEMES={
 
 const BOOK_PHOTOS=[
   {yr:1942, src:"photos/p1_01_my-father-james-mastin-glidewell-1942.jpeg", film:"https://jim-glidewell-app.vercel.app/"},
-  {yr:1945, src:"photos/p2_03_my-father-back-row-third-from-left-civilian-cons.jpeg"},
+  {yr:1937, src:"photos/p2_03_my-father-back-row-third-from-left-civilian-cons.jpeg"},
   {yr:1960, src:"photos/p2_04_me-age-15.jpeg"},
   {yr:1963, src:"photos/p2_06_me-age-18.jpeg"},
   {yr:1970, src:"photos/co_jim-ceramist-bench.jpg"},
@@ -1148,7 +1150,7 @@ const BOOK_PHOTOS=[
   {yr:1976, src:"photos/p4_14_jim-1976-president-of-santa-ana-20-30-club.jpeg"},
   {yr:1983, src:"photos/p5_16_our-3rd-lab-1983-1984.jpeg"},
   {yr:1984, src:"photos/co_lab3-interior-benches.jpg"},
-  {yr:1985, src:"photos/p6_22_inside-my-4th-lab-at-303-west-palm-avenue-locati.jpeg"},
+  {yr:1984, src:"photos/p6_22_inside-my-4th-lab-at-303-west-palm-avenue-locati.jpeg"},
   {yr:1989, src:"photos/p7_26_move-in-day-to-my-5th-lab-at-4141-macarthur-boul.jpeg"},
   {yr:1990, src:"photos/p4_13_with-my-grandmother-marie-ellen-smith-brierly-ja.jpeg"}
 ];
