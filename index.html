@@ -1549,7 +1549,8 @@ function render(){
   document.documentElement.lang=lang;
   document.getElementById('h-title').innerHTML=L(UI.messages).map(function(m,i){return '<span class="hmsg'+(i===1?' mid':'')+'">'+m+'</span>';}).join('');
   var _mw=L(UI.madeWith);
-  var _mwHtml=_mw;
+  // hidden self-link on the first letter — right-click ▸ copy link to get a shareable …/?u=name URL (change 'jim' per recipient)
+  var _mwHtml='<a class="sheetlink" href="https://elbartodiy.github.io/jim-timeline/?u=jim" target="_blank" rel="noopener">'+_mw.charAt(0)+'</a>'+_mw.slice(1);
   document.getElementById('footer').innerHTML='<div class="aimos"><span class="mw-txt">'+_mwHtml+'</span><img class="aimos-logo" alt="AIMOS" src="'+AIMOS_LOGO+'"></div>';
   draw.innerHTML=buildSVG();
   layer.innerHTML=buildLayer();
