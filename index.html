@@ -1547,10 +1547,10 @@ function buildLegend(){
 let openRef=null;
 function render(){
   document.documentElement.lang=lang;
-  document.getElementById('h-title').innerHTML=L(UI.messages).map(function(m,i){return '<span class="hmsg'+(i===1?' mid':'')+'">'+m+'</span>';}).join('');
+  // hidden self-link on the 2nd header line ("Jim Glidewell") — right-click ▸ copy link to get a shareable …/?u=name URL (change 'jim' per recipient)
+  document.getElementById('h-title').innerHTML=L(UI.messages).map(function(m,i){var inner=(i===1)?'<a class="hmsg-link" href="https://elbartodiy.github.io/jim-timeline/?u=jim" target="_blank" rel="noopener">'+m+'</a>':m;return '<span class="hmsg'+(i===1?' mid':'')+'">'+inner+'</span>';}).join('');
   var _mw=L(UI.madeWith);
-  // hidden self-link on the first letter — right-click ▸ copy link to get a shareable …/?u=name URL (change 'jim' per recipient)
-  var _mwHtml='<a class="sheetlink" href="https://elbartodiy.github.io/jim-timeline/?u=jim" target="_blank" rel="noopener">'+_mw.charAt(0)+'</a>'+_mw.slice(1);
+  var _mwHtml=_mw;
   document.getElementById('footer').innerHTML='<div class="aimos"><span class="mw-txt">'+_mwHtml+'</span><img class="aimos-logo" alt="AIMOS" src="'+AIMOS_LOGO+'"></div>';
   draw.innerHTML=buildSVG();
   layer.innerHTML=buildLayer();
