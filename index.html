@@ -1892,7 +1892,7 @@ const MORE_IMG={};
   show();
 }
 // ===== Speaker-connections survey (lives inside the Personalities panel) =====
-const SURVEY_ENDPOINT=""; // not wired for the personal-film tool yet — was pointing at the company-film sheet; set a new Apps Script URL before using the survey live
+const SURVEY_ENDPOINT="https://script.google.com/macros/s/AKfycbz0Q_R7Em__E-_HB48QxGogA9AcBl0Lrd_OnEqbiEoHq4E7oZv9ykoV2WtD7CX5KYsM/exec"; // Jim-timeline visit/survey receiver (Google Apps Script)
 // Visit log: one silent ping per page load. Named links (…/?u=bobbie) tag who; no ?u → "anon".
 function gwLogVisit(){
   if(!SURVEY_ENDPOINT) return;
