@@ -648,7 +648,7 @@ const UI = {
   calTent:{en:"⚠ Planned — not confirmed yet",ru:"⚠ Планируется — пока не утверждено"},
   archiveKicker:{en:"Jim's personal + company archive",ru:"Личный архив Джима + архив компании"},
   archiveTitle:{en:"Finding, reviewing and cutting in the archive",ru:"Поиск, отсмотр и монтаж архива"},
-  archiveIntro:{en:"Who to ask, where to look, and what we've found so far.",ru:"Кого спросить, где искать и что уже нашли."},
+  archiveIntro:{en:"For the film the priority is the PHOTO & VIDEO archive (event footage, home movies, historical photos, the recorded interviews). The text archive — Jessica's notes & letters — is a separate track that feeds the Digital Jim tool, not the film's B-roll.",ru:"Для фильма приоритет — ФОТО/ВИДЕО-архив (съёмка событий, домашние плёнки, исторические фото, записанные интервью). Текстовый архив — заметки и письма Джессики — отдельная линия для «Цифрового Джима», а не B-roll фильма."},
   archivePipelineH:{en:"The pipeline",ru:"Пайплайн"},
   archivePeopleH:{en:"Who to ask",ru:"Кого спросить"},
   archiveSourcesH:{en:"Where to look",ru:"Где искать"},
@@ -919,9 +919,11 @@ const CAL_MONTH_DETAIL={
 
 const ARCHIVE_STAGES=[
   {k:'ask', nm:{en:"1 · Find & ask",ru:"1 · Найти и спросить"}, tasks:[
-    {done:false, t:{en:"Confirm Jessica is the archivist for the phone notes, desktop entries and letters",ru:"Подтвердить, что Джессика — архивист заметок с телефона, десктопа и писем"}},
-    {done:false, t:{en:"Ask Jim's office whether a fuller photo set survives beyond the “Constant Change” book crops",ru:"Спросить в приёмной Джима, сохранился ли более полный набор фото за пределами обрезков книги «Constant Change»"}},
-    {done:false, t:{en:"Ask directly whether the IPO offer is real, current, past, or hypothetical — before developing The Offer any further",ru:"Спросить напрямую, реально ли предложение IPO — сейчас, в прошлом или гипотетически — до дальнейшей разработки The Offer"}}
+    {done:false, t:{en:"FILM PRIORITY: ask media/marketing for the event photo & video library (symposia, Knott's, DOTR) — the richest usable B-roll",ru:"ПРИОРИТЕТ ФИЛЬМА: запросить у медиа/маркетинга фото/видео событий (симпозиумы, Knott's, DOTR) — самый богатый готовый B-roll"}},
+    {done:false, t:{en:"Ask Jim + family whether any home movies / Super-8 / early film of Jim or the 1970 one-man lab survive",ru:"Спросить Джима и семью, сохранились ли домашние плёнки / Super-8 / ранняя съёмка Джима или лаборатории-одиночки 1970"}},
+    {done:false, t:{en:"Ask Jim's office for the full uncropped 'Constant Change' photo originals",ru:"Запросить в приёмной Джима полные необрезанные оригиналы фото «Constant Change»"}},
+    {done:false, t:{en:"Separate track — note that Jessica's ~700 notes + letters are TEXT for the Digital Jim tool, not the film's footage",ru:"Отдельная линия — учесть, что ~700 заметок Джессики + письма это ТЕКСТ для «Цифрового Джима», а не отснятый материал фильма"}},
+    {done:false, t:{en:"Ask directly whether the IPO offer is real — before developing The Offer further",ru:"Спросить напрямую, реально ли предложение IPO — до дальнейшей разработки The Offer"}}
   ]},
   {k:'access', nm:{en:"2 · Get access",ru:"2 · Получить доступ"}, tasks:[
     {done:false, t:{en:"Get access to the full scan set behind “Constant Change” (we have book crops; ask for the originals)",ru:"Получить доступ к полному набору сканов книги «Constant Change» (у нас есть обрезки; попросить оригиналы)"}},
@@ -943,30 +945,30 @@ const ARCHIVE_STAGES=[
   ]}
 ];
 const ARCHIVE_PEOPLE=[
-  {nm:"Jessica", role:{en:"Archivist — phone notes, desktop notes, letters (role to confirm)",ru:"Архивист — заметки с телефона, десктопа, письма (роль подтвердить)"}, status:'ask',
-   note:{en:"Believed to hold and organize ~700 phone notes (2018–present), ~168 desktop notes, and letters to the children. Keeps originals, doesn't rewrite them. Top priority contact — confirm her role and get access.",ru:"Предположительно держит и упорядочивает ~700 заметок с телефона (2018—наст.), ~168 заметок с десктопа и письма детям. Хранит оригиналы, не переписывает их. Приоритетный контакт — подтвердить роль и получить доступ."}},
-  {nm:"Jim Glidewell", role:{en:"Subject — personal archive behind “Constant Change”",ru:"Герой — личный архив за книгой «Constant Change»"}, status:'ask',
-   note:{en:"The book proves a curated photo set exists — worth asking whether the full, uncropped originals still exist and who holds the files. Also the only person who can confirm whether the IPO premise is real.",ru:"Книга доказывает, что где-то есть подобранный набор фото — стоит спросить, сохранились ли полные, необрезанные оригиналы и у кого файлы. Также единственный, кто может подтвердить, реально ли предложение IPO."}},
-  {nm:"Parvina", role:{en:"Wife — favors The Offer version",ru:"Жена — за версию The Offer"}, status:'ask',
-   note:{en:"Has raised the digital-clone / living-archive ethics question directly — resolve this with her before building any AI/voice tool on the archive. Also worth asking about the modern jacket Jim was seen wearing (visual-refresh idea, unresolved).",ru:"Прямо поднимала этический вопрос цифрового клона / живого архива — решить с ней до постройки любого AI/голосового инструмента на архиве. Также стоит спросить про современную куртку, в которой видели Джима (идея визуального рефреша, не решена)."}},
-  {nm:{en:"Five children (Julie, Lila, Darius, Jimmy, William)",ru:"Пятеро детей (Джули, Лила, Дариус, Джимми, Уильям)"}, role:{en:"Family — letters, personal memory",ru:"Семья — письма, личная память"}, status:'todo',
-   note:{en:"May hold or remember personal letters and moments not in any company system. Julie is from Jim's first marriage; the other four are with Parvina.",ru:"Могут держать или помнить личные письма и моменты, не попавшие ни в одну корпоративную систему. Джули — от первого брака Джима; остальные четверо — с Парвиной."}}
+  {nm:{en:"Company media / marketing dept",ru:"Отдел медиа / маркетинга компании"}, role:{en:"Event photo & video — symposia, Knott's, DOTR",ru:"Фото/видео событий — симпозиумы, Knott's, DOTR"}, status:'ask',
+   note:{en:"FILM PRIORITY: years of professionally-shot event footage and photos (symposia, Knott's Berry Farm days, DOTR recaps) — probably the richest usable, on-brand B-roll. Ask who owns the media library now and who owned it in past decades.",ru:"ПРИОРИТЕТ ФИЛЬМА: годы профессионально снятого видео и фото событий (симпозиумы, дни Knott's, рекапы DOTR) — вероятно самый богатый готовый B-roll. Спросить, кто владеет медиатекой сейчас и кто владел раньше."}},
+  {nm:"Jim Glidewell", role:{en:"Subject — personal photo / film archive",ru:"Герой — личный фото/плёночный архив"}, status:'ask',
+   note:{en:"The 'Constant Change' book proves a curated photo set exists — ask for the full uncropped originals, and crucially whether any home movies / Super-8 / early film survive. Also the only person who can confirm whether the IPO premise is real.",ru:"Книга «Constant Change» доказывает, что подобранный набор фото существует — попросить полные необрезанные оригиналы и, главное, сохранились ли домашние киноплёнки / Super-8 / ранняя съёмка. Также единственный, кто подтвердит реальность IPO."}},
+  {nm:{en:"Family (Parvina & the children)",ru:"Семья (Парвина и дети)"}, role:{en:"Home photos & home video",ru:"Домашние фото и домашнее видео"}, status:'todo',
+   note:{en:"May hold personal photos and home-video moments not in any company system — the intimate visual material a personal film needs. Parvina also raised the digital-clone ethics question and can be asked about the modern jacket.",ru:"Могут держать личные фото и домашнее видео, не попавшие ни в одну корпоративную систему — интимный визуал, нужный личному фильму. Парвина также поднимала этику цифрового клона и может рассказать про куртку."}},
+  {nm:{en:"Past event videographers / PR agencies",ru:"Прошлые видеографы / PR-агентства"}, role:{en:"Raw, unedited footage",ru:"Сырой, несмонтированный материал"}, status:'todo',
+   note:{en:"Whoever shot past symposia / campaigns / event recaps may still hold raw, unedited footage we've never seen. Track them down.",ru:"У тех, кто снимал прошлые симпозиумы / кампании / рекапы, может остаться сырой материал, который мы не видели. Найти их."}},
+  {nm:"Jessica", role:{en:"Text archive — notes & letters (→ Digital Jim, NOT film B-roll)",ru:"Текстовый архив — заметки и письма (→ Цифровой Джим, НЕ B-roll фильма)"}, status:'ask',
+   note:{en:"Holds ~700 phone notes (2018–present), ~168 desktop notes and letters to the children. IMPORTANT: this is text — it feeds the Digital Jim / living-archive tool, not the film's photo/video needs. Valuable, but a separate track from the footage hunt.",ru:"Держит ~700 заметок с телефона (2018—наст.), ~168 с десктопа и письма детям. ВАЖНО: это текст — он питает «Цифрового Джима» / живой архив, а НЕ фото/видео-нужды фильма. Ценно, но отдельная линия от поиска отснятого материала."}}
 ];
 const ARCHIVE_SOURCES=[
-  {nm:{en:"C7026 (main personal interview)",ru:"C7026 (основное личное интервью)"}, status:'ask',
-   note:{en:"Recorded around Independence Day — covers freedom, the kidnapping, Rob Grice, fears, Goodwill, closing thoughts. Highest-priority transcript for The Offer's empathy stages.",ru:"Записано около Дня Независимости — покрывает свободу, похищение, Роба Грайса, страхи, Goodwill, финальные мысли. Приоритетный транскрипт для этапов эмпатии в The Offer."}},
-  {nm:{en:"Knottsberry (company-picnic interview)",ru:"Knottsberry (интервью на корпоративе)"}, status:'ask',
-   note:{en:"Recorded at the Knott's Berry Farm company outing — covers “work = family,” Parvina, Costa Rica.",ru:"Записано на выезде компании в Knott's Berry Farm — покрывает «работа = семья», Парвину, Коста-Рику."}},
-  {nm:{en:"Thanksgiving (home interview)",ru:"Thanksgiving (интервью дома)"}, status:'ask',
-   note:{en:"Covers the house, family, the history of the house, the $700M/5,000-employee company facts, the symposia.",ru:"Покрывает дом, семью, историю дома, факты компании ($700М/5000 сотрудников), симпозиумы."}},
-  {nm:{en:"Lunch with Jim (working-lunch interview)",ru:"Lunch with Jim (интервью за рабочим обедом)"}, status:'ask',
-   note:{en:"Biographical narrative plus a working lunch — covers Da Nang, the first wave, fusion materials, FDA, Sherry.",ru:"Биографический нарратив плюс рабочий обед — покрывает Дананг, первую волну, fusion-материалы, FDA, Шерри."}},
-  {nm:{en:"“Constant Change” (the book)",ru:"«Constant Change» (книга)"}, status:'have',
-   note:{en:"Autobiography / company history. We have the book's photo crops (~29 images, see the archive materials below); worth asking whether the full, uncropped originals survive.",ru:"Автобиография / история компании. У нас есть обрезки фото из книги (~29 изображений, см. ниже); стоит спросить, сохранились ли полные необрезанные оригиналы."}},
-  {nm:{en:"Phone notes (Jessica, ~700, 2018–present)",ru:"Заметки с телефона (Джессика, ~700, 2018—наст.)"}, status:'ask',
-   note:{en:"Held by Jessica, believed unreviewed by us so far — a large, unmined source of Jim's own words in his own voice.",ru:"У Джессики, пока, по всей видимости, нами не отсмотрены — большой неразработанный источник слов Джима его собственным голосом."}},
-  {nm:{en:"Letters to the children",ru:"Письма детям"}, status:'todo',
-   note:{en:"Existence reported, not yet located or reviewed — could be a strong, intimate source for the family throughline in any of the four versions.",ru:"Существование заявлено, но пока не найдены и не просмотрены — могут стать сильным, интимным источником для семейной линии в любой из четырёх версий."}}
+  {nm:{en:"Event photo/video library (symposia, Knott's, DOTR)",ru:"Фото/видео событий (симпозиумы, Knott's, DOTR)"}, status:'ask',
+   note:{en:"THE film priority — years of on-brand footage and photos from company events, probably already edited at least once. Richest usable B-roll. Held by media/marketing.",ru:"Приоритет ФИЛЬМА — годы фирменного видео и фото с событий, скорее всего уже смонтировано. Самый богатый готовый B-roll. У медиа/маркетинга."}},
+  {nm:{en:"Home movies / Super-8 / early film of Jim",ru:"Домашние плёнки / Super-8 / ранняя съёмка Джима"}, status:'todo',
+   note:{en:"The big open question for the film: does any MOVING-IMAGE footage of young Jim, the 1970 one-man lab, or family life survive? Ask Jim, family, long-tenured staff — find out early; may not exist.",ru:"Главный открытый вопрос фильма: сохранились ли ДВИЖУЩИЕСЯ кадры молодого Джима, лаборатории-одиночки 1970 или семейной жизни? Спросить Джима, семью, давних сотрудников — выяснить заранее; возможно, не существует."}},
+  {nm:{en:"'Constant Change' photo set (originals)",ru:"Набор фото «Constant Change» (оригиналы)"}, status:'have',
+   note:{en:"We have the book's crops (~18 images, in hand). Ask whether the full, uncropped originals survive — higher resolution for screen.",ru:"У нас есть обрезки из книги (~18 изображений, в наличии). Спросить про полные необрезанные оригиналы — выше разрешение для экрана."}},
+  {nm:{en:"Recorded interviews (C7026, Knottsberry, Thanksgiving, Lunch with Jim)",ru:"Записанные интервью (C7026, Knottsberry, Thanksgiving, Lunch with Jim)"}, status:'ask',
+   note:{en:"The actual filmed interviews — core film material (Jim on camera, in his own words). Request the VIDEO, not just the transcripts.",ru:"Собственно отснятые интервью — ядро материала фильма (Джим на камеру, своими словами). Запросить ВИДЕО, а не только транскрипты."}},
+  {nm:{en:"Physical media — prints, VHS, film reels",ru:"Физические носители — печать, VHS, киноплёнка"}, status:'todo',
+   note:{en:"Old-format photo/video to locate, then digitize before use. Where the oldest visuals may hide.",ru:"Фото/видео в старых форматах — найти, затем оцифровать. Там могут прятаться самые старые визуалы."}},
+  {nm:{en:"Text archive — notes & letters (→ Digital Jim, not the film)",ru:"Текстовый архив — заметки и письма (→ Цифровой Джим, не фильм)"}, status:'ask',
+   note:{en:"Jessica's ~700 phone notes, ~168 desktop notes, letters to the children. This feeds the Digital Jim / living-archive tool — NOT the film's footage. Keep it as a separate track so it doesn't crowd out the photo/video hunt.",ru:"~700 заметок Джессики с телефона, ~168 с десктопа, письма детям. Это питает «Цифрового Джима» / живой архив — НЕ отснятый материал фильма. Держать отдельной линией, чтобы не забивало поиск фото/видео."}}
 ];
 // tag: have = in hand & usable · need = required, not found yet · unused = found, not placed in the edit yet
 const ARCHIVE_MATERIALS=[
