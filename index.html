@@ -997,36 +997,6 @@ const ANG = {
   eileen:{en:"The stepmother of the Las Vegas years — her character is unresolved between sources, handle with care.",ru:"Мачеха вегасских лет — её характер не сведён между источниками, обращаться осторожно."},
 };
 
-const JIM = [
-  {y:"1945", bx:0, t:{en:"Born · Las Vegas",ru:"Родился · Лас-Вегас"},
-    d:{en:"Born May 1945 in Las Vegas. His mother leaves the family 15–18 months later.",ru:"Родился в мае 1945-го в Лас-Вегасе. Мать уходит из семьи через 15–18 месяцев."}},
-  {y:"~1945–54", bx:1, t:{en:"Kentucky farm",ru:"Ферма в Кентукки"},
-    d:{en:"Early childhood on his grandparents' farm — no running water, no electricity, hunting squirrels for food.",ru:"Раннее детство на ферме деда с бабушкой — без водопровода и электричества, охота на белок ради еды."}},
-  {y:"1962", bx:3, t:{en:"Robbed at 17",ru:"Ограблен в 17 лет"},
-    d:{en:"His Las Vegas store is robbed by Donald Lathrop, who kills a police officer and dies within the week.",ru:"Его магазин в Лас-Вегасе грабит Донал Латроп, который через неделю убивает полицейского и погибает."}},
-  {y:"1964–66", bx:4, t:{en:"Vietnam · US Navy",ru:"Вьетнам · ВМС США"},
-    d:{en:"Serves in the first wave landing Marines at Da Nang; carries a wounded soldier himself.",ru:"Служит в первой волне, высаживающей морпехов в Дананге; сам несёт раненого солдата."}},
-  {y:"1966", bx:5, t:{en:"Door-to-door sales",ru:"Продажи по домам"},
-    d:{en:"Back in Las Vegas at 21, sells insurance door to door.",ru:"Вернувшись в Лас-Вегас в 21 год, продаёт страховки по домам."}},
-  {y:"~1966–67", bx:6, t:{en:"Marriage · Julie",ru:"Брак · Джули"},
-    d:{en:"Marries; daughter Julie is born. Moves to Orange County in 1967, works at Sears.",ru:"Женится; рождается дочь Джули. В 1967-м переезд в округ Ориндж, работа в Sears."}},
-  {y:"1969", bx:7, t:{en:"Dental-tech grad",ru:"Диплом зубного техника"},
-    d:{en:"Graduates Orange Coast College's dental-technology program.",ru:"Оканчивает программу зубных технологий Orange Coast College."}},
-  {y:"1970", bx:8, t:{en:"Founds the company",ru:"Основывает компанию"},
-    d:{en:"Opens a one-man ceramics lab in Orange County.",ru:"Открывает лабораторию керамики на одного человека в округе Ориндж."}},
-  {y:"~1980s", bx:9, t:{en:"Meets Rob Grice",ru:"Знакомство с Робом Грайсом"},
-    d:{en:"Meets his future CFO by chance on the beach — later “the most respected person in my life after my father.”",ru:"Случайно знакомится с будущим CFO на пляже — позже «самый уважаемый мной человек после отца»."}},
-  {y:"~2000–02", bx:14, t:{en:"Kidnapping attempt",ru:"Попытка похищения"},
-    d:{en:"An attempted kidnapping on Galaxy Drive, Newport Beach — his fourth time looking down a gun barrel.",ru:"Попытка похищения на Galaxy Drive, Newport Beach — четвёртый раз, когда он смотрел в дуло пистолета."}},
-  {y:"2002", bx:13, t:{en:"Meets Parvina",ru:"Знакомство с Парвиной"},
-    d:{en:"Meets Parvina, from Tajikistan — a second family follows.",ru:"Знакомится с Парвиной из Таджикистана — следом появляется вторая семья."}},
-  {y:"~15 yrs ago", bx:19, t:{en:"Loses Rob Grice",ru:"Теряет Роба Грайса"},
-    d:{en:"Rob Grice dies in a motorcycle accident — the phone call on a Sunday morning.",ru:"Роб Грайс погибает в аварии на мотоцикле — звонок в воскресенье утром."}},
-  {y:"2024", bx:22, t:{en:"Sister's death",ru:"Смерть сестры"},
-    d:{en:"His sister, a year younger, dies shortly after retiring.",ru:"Сестра, на год младше, умирает вскоре после выхода на пенсию."}},
-  {y:"Today", bx:23, t:{en:"The Offer",ru:"The Offer"},
-    d:{en:"Reportedly weighing whether to take the company public — the reality of the offer is unconfirmed, and this is the film's current working premise.",ru:"По имеющимся данным, взвешивает вывод компании на биржу — реальность предложения не подтверждена, это текущая рабочая пружина фильма."}}
-];
 
 const SPK = {
   parvina:{nm:"Parvina", a:13, sc:[13], g:"e", status:"ok",
@@ -1354,17 +1324,6 @@ function buildSVG(){
     });
   }
 
-  // --- Jim's parallel life line --- (no divider above; caption goes BELOW the line)
-  s+='<line class="jimline" x1="84" y1="'+JIMLINEY+'" x2="'+(STAGEW-70)+'" y2="'+JIMLINEY+'"/>';
-  s+='<text class="tierlbl" x="84" y="'+(JIMLINEY+18)+'">'+L(UI.jimTier)+'</text>';
-  JIM.forEach((e,i)=>{
-    const x=X0+e.bx*DX;
-    s+='<g class="jim-ev" id="jim-'+i+'" data-jim="'+i+'">';
-    s+='<rect class="jhit" x="'+(x-16)+'" y="'+(JIMLINEY-16)+'" width="32" height="32"/>';
-    s+='<rect class="jim-nd" x="'+(x-5)+'" y="'+(JIMLINEY-5)+'" width="10" height="10" transform="rotate(45 '+x+' '+JIMLINEY+')"/>';
-    s+='<text class="jim-lbl" x="'+x+'" y="'+(JIMLINEY-14)+'">'+e.y+' · '+L(e.t)+'</text>';
-    s+='</g>';
-  });
 
   // --- production calendar tier (months Jul–Oct); month blocks + event pins live in buildLayer ---
   s+='<line class="tierdiv" x1="72" y1="'+CALDIV+'" x2="'+(STAGEW-70)+'" y2="'+CALDIV+'"/>';
@@ -1377,7 +1336,7 @@ function buildSVG(){
   s+='<rect data-go-allheroes="1" x="78" y="'+(HERODIV-23)+'" width="560" height="24" rx="5" fill="transparent" style="cursor:pointer;pointer-events:all"/>';
   s+='<text class="tierlbl tierlbl-link" data-go-allheroes="1" x="84" y="'+(HERODIV-9)+'">'+L(UI.heroTier)+'</text>';
   // --- lane letters (A–H) on the far left, so we can name each line quickly ---
-  [['A',JIMLINEY+2],['B',JIMLINEY+48],['C',LINEY+2],['D',FILMDIV-8],['E',BEATDIV-8],['F',FRAMETOP+34],['G',HERODIV-8],['H',CALDIV-8]].forEach(function(q){
+  [['B',JIMLINEY+48],['C',LINEY+2],['D',FILMDIV-8],['E',BEATDIV-8],['F',FRAMETOP+34],['G',HERODIV-8],['H',CALDIV-8]].forEach(function(q){
     s+='<text class="laneltr" x="40" y="'+q[1]+'">'+q[0]+'</text>';
   });
   HEROES.forEach((H,r)=>{
@@ -1534,7 +1493,7 @@ function render(){
   buildNav(); buildLegend();
   document.getElementById('v-spine').textContent=L(UI.vSpine);
   document.getElementById('v-full').textContent=L(UI.vFull);
-  if(openRef) openRef.type==='morepeople'?openMorePeople(true):openRef.type==='personalities'?openPersonalities(true):openRef.type==='spk'?openSpeaker(openRef.id,true):openRef.type==='journey'?openJourney(openRef.id,true):openRef.type==='jim'?openJim(openRef.id,true):openRef.type==='hero'?openHeroMoment(openRef.id,openRef.k,true):openRef.type==='pillar'?openPillar(openRef.id,true):openRef.type==='cal'?openCalEvent(openRef.id,true):openRef.type==='calmonth'?openCalMonth(openRef.id,true):openRef.type==='archive'?openArchive(true):openRef.type==='beatsheet'?openBeatSheet(openRef.id,true):openRef.type==='scene'?openScene(openRef.id,true):openRef.type==='allscenes'?openAllScenes(true):openRef.type==='allheroes'?openAllHeroes(true):openBeat(openRef.id,true);
+  if(openRef) openRef.type==='morepeople'?openMorePeople(true):openRef.type==='personalities'?openPersonalities(true):openRef.type==='spk'?openSpeaker(openRef.id,true):openRef.type==='journey'?openJourney(openRef.id,true):openRef.type==='hero'?openHeroMoment(openRef.id,openRef.k,true):openRef.type==='pillar'?openPillar(openRef.id,true):openRef.type==='cal'?openCalEvent(openRef.id,true):openRef.type==='calmonth'?openCalMonth(openRef.id,true):openRef.type==='archive'?openArchive(true):openRef.type==='beatsheet'?openBeatSheet(openRef.id,true):openRef.type==='scene'?openScene(openRef.id,true):openRef.type==='allscenes'?openAllScenes(true):openRef.type==='allheroes'?openAllHeroes(true):openBeat(openRef.id,true);
 }
 
 function setHL(bi,on){
@@ -1555,10 +1514,6 @@ function setJHL(key,on){
     const nd=document.getElementById('nd-'+bi); if(nd)nd.classList.toggle('hl',on);
     document.querySelectorAll('.ev[data-beat="'+bi+'"]').forEach(el=>el.classList.toggle('hl',on));
   });
-  stage.classList.toggle('dim',on);
-}
-function setJimHL(i,on){
-  const el=document.getElementById('jim-'+i); if(el)el.classList.toggle('hl',on);
   stage.classList.toggle('dim',on);
 }
 function setSceneHL(k,on){
@@ -1591,7 +1546,6 @@ function hoverScene(k,on){ if(String(pinScene)===String(k)){ if(on)setSceneHL(k,
     const hb=e.target.closest('.herobar'); if(hb){return;}
     const el=e.target.closest('[data-beat]'); if(el){hoverHL(el.dataset.beat,evt==='mouseover');return;}
     const fm=e.target.closest('[data-scene]'); if(fm){hoverScene(fm.dataset.scene,evt==='mouseover');return;}
-    const jm=e.target.closest('[data-jim]'); if(jm){setJimHL(jm.dataset.jim,evt==='mouseover');return;}
     const jl=e.target.closest('[data-journey]'); if(jl)setJHL(jl.dataset.journey,evt==='mouseover');
   });
 });
@@ -1641,13 +1595,6 @@ function openJourney(key,keep){
     +'<dt>'+L(UI.jTouches)+'</dt><dd><div class="who">'+list+'</div></dd>'
     +(j.prov?'<dt>'+L(UI.jNote)+'</dt><dd style="color:var(--warn)">'+L(j.provNote)+'</dd>':'')
     +'</dl>';
-  show();
-}
-function openJim(i,keep){
-  const e=JIM[i]; if(!keep)openRef={type:'jim',id:i}; clearPin();
-  pin.innerHTML='<div class="kicker">'+L(UI.jimKicker)+' · '+e.y+'</div>'
-    +'<h2>'+L(e.t)+'</h2>'
-    +'<dl><dt>'+L(UI.whatHappened)+'</dt><dd>'+L(e.d)+'</dd></dl>';
   show();
 }
 function openBeatSheet(i,keep){
@@ -1960,7 +1907,6 @@ draw.addEventListener('click',e=>{
   const hb=e.target.closest('.herobar'); if(hb){openHeroMoment(hb.dataset.hero,+hb.dataset.scene);return;}
   const nd=e.target.closest('.nd'); if(nd){openBeat(+nd.dataset.beat);return;}
   const fm=e.target.closest('[data-scene]'); if(fm){openScene(+fm.dataset.scene);return;}
-  const jm=e.target.closest('[data-jim]'); if(jm){openJim(+jm.dataset.jim);return;}
   const jl=e.target.closest('[data-journey]'); if(jl){openJourney(jl.dataset.journey);return;}
 });
 pin.addEventListener('click',e=>{
