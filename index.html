@@ -1151,8 +1151,8 @@ const SCENE_PILLARS={
 };
 
 const SCENE_BND_PCT=[0,11,15.67,20.33,25,33.33,41.67,50,57,64,71,78,85,92.5,100];
-const X0=190, DX=252, LINEY=332, PAD=190;
-const SPKROWY=644, FILMDIV=656, FBTOP=672, FBH=54, FILMLINEY=672, BEATDIV=754, BEATY=778, FRAMEDIV=818, FRAMETOP=830, FRAMEH=54, HERODIV=920, HEROW0=938, HERO_DY=22, PDIV=1062, ACCY=1084, PROW0=1108, PROW_DY=24, CALDIV=1062, CALTOP=1084, CALH=46, JIMDIV=46, JIMLINEY=78, STAGEH=1156;
+const X0=190, DX=252, LINEY=250, PAD=190;
+const SPKROWY=644, FILMDIV=656, FBTOP=672, FBH=54, FILMLINEY=672, BEATDIV=754, BEATY=778, FRAMEDIV=818, FRAMETOP=830, FRAMEH=54, HERODIV=920, HEROW0=938, HERO_DY=22, PDIV=1062, ACCY=1084, PROW0=1108, PROW_DY=24, CALDIV=1062, CALTOP=1084, CALH=46, JIMDIV=46, JIMLINEY=24, STAGEH=1156;
 BEATS.forEach((b,i)=>b.x=X0+i*DX);
 const STAGEW=X0+(BEATS.length-1)*DX+PAD;
 const stage=document.getElementById('stage'), draw=document.getElementById('draw'), layer=document.getElementById('layer');
@@ -1336,7 +1336,7 @@ function buildSVG(){
   s+='<rect data-go-allheroes="1" x="78" y="'+(HERODIV-23)+'" width="560" height="24" rx="5" fill="transparent" style="cursor:pointer;pointer-events:all"/>';
   s+='<text class="tierlbl tierlbl-link" data-go-allheroes="1" x="84" y="'+(HERODIV-9)+'">'+L(UI.heroTier)+'</text>';
   // --- lane letters (A–H) on the far left, so we can name each line quickly ---
-  [['B',JIMLINEY+48],['C',LINEY+2],['D',FILMDIV-8],['E',BEATDIV-8],['F',FRAMETOP+34],['G',HERODIV-8],['H',CALDIV-8]].forEach(function(q){
+  [['A',JIMLINEY+48],['B',LINEY+2],['C',FILMDIV-8],['D',BEATDIV-8],['E',FRAMETOP+34],['F',HERODIV-8],['G',CALDIV-8]].forEach(function(q){
     s+='<text class="laneltr" x="40" y="'+q[1]+'">'+q[0]+'</text>';
   });
   HEROES.forEach((H,r)=>{
