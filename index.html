@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#13171B;--ink-2:#4A555F;--paper:#F4F6F8;--card:#FFFFFF;--line:#E4E8EC;
+    --ink:#13171B;--ink-2:#4A555F;--paper:#F2EFE8;--card:#FFFFFF;--line:#E4E8EC;
     --navy:#1C2024;--slate:#9098A0;--teal:#137C7C;--clay:#E11B2A;
     --red:#E11B2A;--red-bright:#F5404B;--red-tint:#FCEDEE;
     --ok:#1F7A57;--warn:#B07A16;--mute:#8A929B;
@@ -98,7 +98,10 @@
   .morep .mp-sub{font-family:var(--mono);font-size:10px;color:var(--mute);margin-top:2px}
   .cast-group{margin:16px 0 4px}
   .cast-gh{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 9px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-  .pers-card.roster.arch{opacity:.66}
+  .pers-card.roster.arch{opacity:.72}
+  .pers-card.mem{cursor:pointer;transition:box-shadow .15s,transform .15s,opacity .15s}
+  .pers-card.mem:hover{opacity:1;box-shadow:0 4px 14px rgba(19,23,27,.10);transform:translateY(-2px)}
+  .pers-card.mem .pc-nm{cursor:pointer}
   .st-tag{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:9px;vertical-align:middle;margin-left:5px;border:1px solid var(--line);color:var(--mute);font-weight:500}
   .st-tag.st-line{color:var(--ok);border-color:var(--ok)}
   .st-tag.st-cast,.st-tag.st-id{color:var(--warn);border-color:var(--warn)}
@@ -1026,14 +1029,14 @@ const SPK = {
 const CAST = [
   { g:{en:"Family — intimate access", ru:"Семья — интимный доступ"}, people:[
     {id:"parvina"},
-    {n:"Eileen", st:"archive", r:{en:"Jim's stepmother of the Las Vegas / latchkey years (took him to Knott's Berry Farm ~1956). Not interviewable — archive/memory only; the negative characterization in our sources is unresolved, handle with care.", ru:"Мачеха Джима вегасских лет «с ключом на шее» (возила в Knott's Berry Farm ~1956). Не интервьюируема — только архив/память; негативная характеристика в источниках не сведена, обращаться осторожно."}},
+    {n:"Eileen", k:"eileen", st:"archive", r:{en:"Jim's stepmother of the Las Vegas / latchkey years — took him to Knott's Berry Farm (~1956).", ru:"Мачеха Джима вегасских лет «с ключом на шее» — возила его в Knott's Berry Farm (~1956)."}, have:{en:"An archival photo with Jim (~1976). Sourcing on her character is unresolved — two conflicting accounts; resolve with family before any use.", ru:"Архивное фото с Джимом (~1976). Характеристика не сведена — два противоречивых рассказа; уточнить с семьёй до использования."}},
     {n:"Julie", k:"julie", st:"cast", r:{en:"Eldest daughter (Jim's first marriage, born when he was 21) — the early Jim.", ru:"Старшая дочь (первый брак, родилась когда Джиму был 21) — ранний Джим."}},
     {n:"Jimmy", k:"jimmy", st:"cast", r:{en:"Son, with Parvina — potential heir; the vector of 'where it leads'.", ru:"Сын, от брака с Парвиной — потенциальный наследник; вектор «куда ведёт»."}},
     {n:"William", k:"william", st:"cast", r:{en:"Son, with Parvina — potential heir; the vector of 'where it leads'.", ru:"Сын, от брака с Парвиной — потенциальный наследник; вектор «куда ведёт»."}},
     {n:"Darius", k:"darius", st:"cast", r:{en:"Son, with Parvina.", ru:"Сын, от брака с Парвиной."}},
     {n:"Lila", k:"lila", st:"cast", r:{en:"Daughter, with Parvina.", ru:"Дочь, от брака с Парвиной."}},
-    {n:"Jim's sister", st:"archive", r:{en:"A year younger; died 2024 shortly after retiring — memory/archive only.", ru:"На год младше; умерла в 2024 вскоре после пенсии — только память/архив."}},
-    {n:"Jim's father", st:"archive", r:{en:"Railroad worker, often away; remarried Eileen after Jim's mother left — archive.", ru:"Работал на ж/д, часто в отъезде; женился на Эйлин после ухода матери — архив."}}
+    {n:"Jim's sister", k:"sister", st:"archive", r:{en:"A year younger; passed in 2024 shortly after retiring.", ru:"На год младше; её не стало в 2024-м вскоре после выхода на пенсию."}, have:{en:"At least one photograph (Jim and his sister). Family memory. To gather: her name, more photos, and — with the family's blessing — how gently to touch her 2024 passing on screen.", ru:"Есть как минимум одно фото (Джим с сестрой). Семейная память. Собрать: её имя, ещё фото и — с согласия семьи — как бережно коснуться её ухода 2024-го в кадре."}},
+    {n:"Jim's father", k:"father", st:"archive", r:{en:"Railroad worker, often away; remarried Eileen after Jim's mother left.", ru:"Работал на ж/д, часто в отъезде; женился на Эйлин после ухода матери."}, have:{en:"A photograph — 'James Mastin Glidewell, 1942' (on the timeline). His story is thin in our sources — to gather: more photos and any records.", ru:"Фотография — «James Mastin Glidewell, 1942» (на линии). История в наших источниках скудна — собрать: ещё фото и любые записи."}}
   ]},
   { g:{en:"Company long-timers & culture", ru:"Долгожители компании и культура"}, people:[
     {id:"phil"},
@@ -1057,12 +1060,13 @@ const CAST = [
     {n:"Dr. Suzanne Thaler", k:"thaler", st:"off", r:{en:"Jim's dentist — the crown-maker's own crowns. Kept off the timeline for now.", ru:"Стоматолог Джима — коронки создателя коронок. Пока снята с линии."}}
   ]},
   { g:{en:"Archive only — deceased", ru:"Только архив — умершие"}, people:[
-    {n:"Rob Grice", st:"archive", r:{en:"CFO / right hand, 'the most respected person after my father'. Voice via interviews/photos; others tell of him.", ru:"CFO / правая рука, «самый уважаемый после отца». Голос — через интервью/фото; о нём рассказывают другие."}},
-    {n:"Donald Lathrop", st:"archive", r:{en:"The 1962 robber — killed a police officer a week later, died in the shootout.", ru:"Грабитель 1962-го — через неделю убил полицейского, погиб в перестрелке."}},
-    {n:"Johnny Rappilo", st:"archive", r:{en:"Archive figure from the materials.", ru:"Архивная фигура из материалов."}}
+    {n:"Rob Grice", k:"robgrice", st:"archive", r:{en:"CFO / right hand — 'the most respected person after my father'.", ru:"CFO / правая рука — «самый уважаемый после отца»."}, have:{en:"Jim's own recollections across interviews (met on the beach; the four days that sealed the friendship; the Sunday-morning call). Likely photos in the family/company archive. To gather: any video/audio of Rob himself and colleagues who knew him.", ru:"Воспоминания самого Джима в интервью (знакомство на пляже; четыре дня, скрепившие дружбу; звонок в воскресенье утром). Вероятно, фото в семейном/корпоративном архиве. Собрать: любое видео/аудио самого Роба и коллег, знавших его."}},
+    {n:"Donald Lathrop", k:"lathrop", st:"archive", r:{en:"The 1962 robber — killed a police officer a week later, then fell in the shootout.", ru:"Грабитель 1962-го — через неделю убил полицейского, затем погиб в перестрелке."}, have:{en:"Public record only — 1962 Las Vegas newspaper coverage of the store robbery, the officer's killing, and the shootout. No personal material; event/archival context, not a portrait.", ru:"Только публичные записи — газеты Лас-Вегаса 1962-го об ограблении, убийстве полицейского и перестрелке. Личных материалов нет; контекст события, не портрет."}},
+    {n:"Johnny Rappilo", k:"rappilo", st:"archive", r:{en:"A name carried over from the materials.", ru:"Имя, перешедшее из материалов."}, have:{en:"We haven't yet established what exists on him or his exact role — to confirm, and to check whether any archive is held.", ru:"Пока не установлено, что о нём есть и какова его роль — уточнить и проверить, есть ли архив."}}
   ]}
 ];
 const CAST_NM={}; CAST.forEach(function(g){g.people.forEach(function(p){ if(p.k)CAST_NM[p.k]=p.n; });});
+const MEM={}; CAST.forEach(function(g){g.people.forEach(function(p){ if(p.st==='archive'&&p.k)MEM[p.k]=p; });});
 
 const SPK_IMG={};
 
@@ -1517,7 +1521,7 @@ function render(){
   buildNav(); buildLegend();
   document.getElementById('v-spine').textContent=L(UI.vSpine);
   document.getElementById('v-full').textContent=L(UI.vFull);
-  if(openRef) openRef.type==='morepeople'?openMorePeople(true):openRef.type==='personalities'?openPersonalities(true):openRef.type==='spk'?openSpeaker(openRef.id,true):openRef.type==='journey'?openJourney(openRef.id,true):openRef.type==='hero'?openHeroMoment(openRef.id,openRef.k,true):openRef.type==='pillar'?openPillar(openRef.id,true):openRef.type==='cal'?openCalEvent(openRef.id,true):openRef.type==='calmonth'?openCalMonth(openRef.id,true):openRef.type==='archive'?openArchive(true):openRef.type==='beatsheet'?openBeatSheet(openRef.id,true):openRef.type==='scene'?openScene(openRef.id,true):openRef.type==='allscenes'?openAllScenes(true):openRef.type==='allheroes'?openAllHeroes(true):openBeat(openRef.id,true);
+  if(openRef) openRef.type==='morepeople'?openMorePeople(true):openRef.type==='personalities'?openPersonalities(true):openRef.type==='spk'?openSpeaker(openRef.id,true):openRef.type==='memory'?openMemory(openRef.id,true):openRef.type==='journey'?openJourney(openRef.id,true):openRef.type==='hero'?openHeroMoment(openRef.id,openRef.k,true):openRef.type==='pillar'?openPillar(openRef.id,true):openRef.type==='cal'?openCalEvent(openRef.id,true):openRef.type==='calmonth'?openCalMonth(openRef.id,true):openRef.type==='archive'?openArchive(true):openRef.type==='beatsheet'?openBeatSheet(openRef.id,true):openRef.type==='scene'?openScene(openRef.id,true):openRef.type==='allscenes'?openAllScenes(true):openRef.type==='allheroes'?openAllHeroes(true):openBeat(openRef.id,true);
 }
 
 function setHL(bi,on){
@@ -1871,7 +1875,7 @@ function svSubmit(){
 function openPersonalities(keep){
   if(!keep)openRef={type:'personalities'}; clearPin();
   const sv=svLoad();
-  const STL={line:{en:'on the line',ru:'на линии'},cast:{en:'to find / invite',ru:'найти / пригласить'},id:{en:'to identify',ru:'установить имя'},off:{en:'off the line',ru:'снят с линии'},archive:{en:'archive',ru:'архив'}};
+  const STL={line:{en:'on the line',ru:'на линии'},cast:{en:'to find / invite',ru:'найти / пригласить'},id:{en:'to identify',ru:'установить имя'},off:{en:'off the line',ru:'снят с линии'},archive:{en:'(in memory)',ru:'(в памяти)'}};
   function famHTML(id,a){ return SURVEY_FAM.map(f=>'<button type="button" class="sv-fam'+(a.fam===f.v?' on':'')+'" data-sv-id="'+id+'" data-sv-fam="'+f.v+'">'+L(f)+'</button>').join(''); }
   function conn(id,a){ return '<input class="sv-connect" data-sv-id="'+id+'" placeholder="'+L({en:'Can you connect / via whom?',ru:'Могу свести / через кого?'})+'" value="'+svEsc(a.connect||'')+'">'; }
   function tag(st){ return '<span class="st-tag st-'+st+'">'+L(STL[st]||STL.cast)+'</span>'; }
@@ -1884,8 +1888,10 @@ function openPersonalities(keep){
         +'<div class="sv-fams">'+fam+'</div>'+(connected?'':conn(pp.id,a))+'</div></div>';
     }
     var isArch=(pp.st==='archive'); var k=pp.k||''; var a=(k&&sv.answers&&sv.answers[k])||{};
-    var svBits=(!isArch&&k)?'<div class="sv-fams">'+famHTML(k,a)+'</div>'+conn(k,a):'';
-    return '<div class="pers-card sv-card roster'+(isArch?' arch':'')+'">'
+    if(isArch){ return '<div class="pers-card sv-card roster arch mem" data-mem="'+k+'">'
+      +'<div class="pc-tx"><div class="pc-nm" data-mem="'+k+'" title="'+L({en:'Open — what we have',ru:'Открыть — что у нас есть'})+'">'+pp.n+' '+tag('archive')+'</div><div class="pc-role">'+L(pp.r)+'</div></div></div>'; }
+    var svBits=k?'<div class="sv-fams">'+famHTML(k,a)+'</div>'+conn(k,a):'';
+    return '<div class="pers-card sv-card roster">'
       +'<div class="pc-tx"><div class="pc-nm">'+pp.n+' '+tag(pp.st||'cast')+'</div><div class="pc-role">'+L(pp.r)+'</div>'+svBits+'</div></div>';
   }
   const groups=CAST.map(g=>'<div class="cast-group"><h3 class="cast-gh">'+L(g.g)+'</h3><div class="pers-grid sv-grid">'+g.people.map(card).join('')+'</div></div>').join('');
@@ -1894,6 +1900,12 @@ function openPersonalities(keep){
     +'<p class="scdesc">'+L({en:'Everyone who can carry a piece of Jim\'s story, grouped by circle; the tag shows status. Know someone? Mark how well and whether you can connect us — one Send at the bottom.',ru:'Все, кто может нести кусок истории Джима, по кругам; тег — статус. Знаете кого-то? Отметьте, насколько, и можете ли свести — одна «Отправить» внизу.'})+'</p>'
     +groups
     +'<div class="sv-foot"><input class="sv-name" placeholder="'+L({en:'Your name',ru:'Ваше имя'})+'" value="'+svEsc(sv.name)+'"><button type="button" class="sv-send" id="sv-send">'+L({en:'Send',ru:'Отправить'})+'</button><span class="sv-status" id="sv-status"></span></div>';
+  show();
+}
+function openMemory(k,keep){ var e=MEM[k]; if(!e)return; if(!keep)openRef={type:'memory',id:k}; clearPin();
+  pin.innerHTML='<div class="kicker">'+L({en:'In memory · what we have',ru:'В памяти · что у нас есть'})+' · <span class="pers-back" data-go-pers="1">'+L(UI.allPers)+'</span></div>'
+    +'<h2>'+e.n+'</h2><div class="role">'+L(e.r)+'</div>'
+    +'<dl>'+(e.have?'<dt>'+L({en:'What we have',ru:'Что у нас есть'})+'</dt><dd>'+L(e.have)+'</dd>':'')+'</dl>';
   show();
 }
 function show(){panel.classList.add('open');panel.setAttribute('aria-hidden','false');}
@@ -1938,6 +1950,7 @@ pin.addEventListener('click',e=>{
   const cn=e.target.closest('[data-cal-nav]'); if(cn){openCalMonth(+cn.dataset.calNav);return;}
   const ga=e.target.closest('[data-go-allscenes]'); if(ga){openAllScenes();return;}
   const gp=e.target.closest('[data-go-pers]'); if(gp){openPersonalities();return;}
+  const gm=e.target.closest('[data-mem]'); if(gm){openMemory(gm.dataset.mem);return;}
   const gb=e.target.closest('[data-go-beat]'); if(gb){openBeat(+gb.dataset.goBeat);return;}
   const gs=e.target.closest('[data-go-scene]'); if(gs){openScene(+gs.dataset.goScene);return;}
   const g=e.target.closest('[data-go]'); if(g)openSpeaker(g.dataset.go);
