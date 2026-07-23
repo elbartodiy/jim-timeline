@@ -1091,7 +1091,7 @@ const CP={}; CAST.forEach(function(g){g.people.forEach(function(p){ if(p.k)CP[p.
 const SPK_IMG={};
 
 const byBeat={};
-Object.entries(SPK).forEach(([id,s])=>{(byBeat[s.a]=byBeat[s.a]||[]).push(Object.assign({id},s));});
+/* on-line speaker chips removed — personalities now live only in the Personalities panel */
 // speakers covering each scene (theme) — for variant-A initials at scene x
 const sceneSpeakers={};
 Object.entries(SPK).forEach(([id,s])=>{(s.sc||[]).forEach(n=>{(sceneSpeakers[n]=sceneSpeakers[n]||[]).push(id);});});
@@ -1200,8 +1200,8 @@ const SCENE_PILLARS={
 };
 
 const SCENE_BND_PCT=[0,11,15.67,20.33,25,33.33,41.67,50,57,64,71,78,85,92.5,100];
-const X0=190, DX=252, LINEY=250, PAD=190;
-const SPKROWY=574, FILMDIV=586, FBTOP=602, FBH=54, FILMLINEY=602, BEATDIV=684, BEATY=708, FRAMEDIV=748, FRAMETOP=760, FRAMEH=54, HERODIV=850, HEROW0=868, HERO_DY=22, PDIV=992, ACCY=1014, PROW0=1038, PROW_DY=24, CALDIV=992, CALTOP=1014, CALH=46, JIMDIV=46, JIMLINEY=24, STAGEH=1086;
+const X0=190, DX=252, LINEY=190, PAD=190;
+const SPKROWY=514, FILMDIV=526, FBTOP=542, FBH=54, FILMLINEY=542, BEATDIV=624, BEATY=648, FRAMEDIV=688, FRAMETOP=700, FRAMEH=54, HERODIV=790, HEROW0=808, HERO_DY=22, PDIV=932, ACCY=954, PROW0=978, PROW_DY=24, CALDIV=932, CALTOP=954, CALH=46, JIMDIV=46, JIMLINEY=24, STAGEH=1026;
 BEATS.forEach((b,i)=>b.x=X0+i*DX);
 const STAGEW=X0+(BEATS.length-1)*DX+PAD;
 const stage=document.getElementById('stage'), draw=document.getElementById('draw'), layer=document.getElementById('layer');
