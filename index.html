@@ -102,6 +102,8 @@
   .pers-card.mem{cursor:pointer;transition:box-shadow .15s,transform .15s,opacity .15s}
   .pers-card.mem:hover{opacity:1;box-shadow:0 4px 14px rgba(19,23,27,.10);transform:translateY(-2px)}
   .pers-card.mem .pc-nm{cursor:pointer}
+  .pc-nm.cprof{cursor:pointer}
+  .pc-nm.cprof:hover{color:var(--red)}
   .st-tag{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:9px;vertical-align:middle;margin-left:5px;border:1px solid var(--line);color:var(--mute);font-weight:500}
   .st-tag.st-line{color:var(--ok);border-color:var(--ok)}
   .st-tag.st-cast,.st-tag.st-id{color:var(--warn);border-color:var(--warn)}
@@ -1046,11 +1048,11 @@ const CAST = [
   { g:{en:"Family — intimate access", ru:"Семья — интимный доступ"}, people:[
     {id:"parvina"},
     {n:"Eileen", k:"eileen", st:"archive", r:{en:"Jim's stepmother of the Las Vegas / latchkey years — took him to Knott's Berry Farm (~1956).", ru:"Мачеха Джима вегасских лет «с ключом на шее» — возила его в Knott's Berry Farm (~1956)."}, have:{en:"An archival photo with Jim (~1976). Sourcing on her character is unresolved — two conflicting accounts; resolve with family before any use.", ru:"Архивное фото с Джимом (~1976). Характеристика не сведена — два противоречивых рассказа; уточнить с семьёй до использования."}},
-    {n:"Julie", k:"julie", st:"cast", r:{en:"Eldest — from the first marriage, born 1966 (Jim was 21); she runs the Las Vegas lab. Today ~60.", ru:"Старшая — от первого брака, род. 1966 (Джиму был 21); управляет лабораторией в Лас-Вегасе. Сегодня ~60."}},
-    {n:"Jimmy", k:"jimmy", st:"cast", r:{en:"Son with Parvina, born ~2003 — usually named a successor. Today ~23 — older than Jim was when Julie was already born.", ru:"Сын от Парвины, род. ~2003 — обычно называют преемником. Сегодня ~23 — старше, чем был Джим, когда уже родилась Джули."}},
-    {n:"William", k:"william", st:"cast", r:{en:"Son with Parvina, born ~2005 — the other name usually given as successor. Today ~21 — the age Jim was back from Vietnam, selling door to door.", ru:"Сын от Парвины, род. ~2005 — второе имя среди преемников. Сегодня ~21 — возраст, в котором Джим вернулся из Вьетнама и продавал по домам."}},
-    {n:"Darius", k:"darius", st:"cast", r:{en:"Youngest, with Parvina, born ~2009 (not a twin). Today ~17 — the age Jim was during the robbery, the first gun.", ru:"Младший, от Парвины, род. ~2009 (не близнец). Сегодня ~17 — возраст Джима во время ограбления, первое дуло."}},
-    {n:"Lila", k:"lila", st:"cast", r:{en:"Daughter with Parvina, born ~2007. Today ~19 — the age Jim was landing at Da Nang.", ru:"Дочь от Парвины, род. ~2007. Сегодня ~19 — возраст, в котором Джим высаживался в Дананге."}},
+    {n:"Julie", k:"julie", st:"cast", r:{en:"Eldest child, first marriage · born 1966 · today ~60 · runs the Las Vegas lab", ru:"Старший ребёнок, первый брак · род. 1966 · сегодня ~60 · управляет лабораторией в Лас-Вегасе"}, prof:{parallel:{en:"Today ~60 — older than Jim was through most of the arc the film covers; she already runs the Las Vegas lab.", ru:"Сегодня ~60 — старше, чем был Джим почти на всём протяжении арки фильма; уже управляет лабораторией в Лас-Вегасе."}, why:{en:"Eldest child, from the first marriage (born 1966) — the early-Jim generation.", ru:"Старший ребёнок, от первого брака (род. 1966) — поколение раннего Джима."}}},
+    {n:"Jimmy", k:"jimmy", st:"cast", r:{en:"Eldest son, with Parvina · born ~2003 · today ~23", ru:"Старший сын, от Парвины · род. ~2003 · сегодня ~23"}, prof:{parallel:{en:"Today ~23 — already older than Jim was when daughter Julie was born (~21), and two years short of the age Jim founded the company (25).", ru:"Сегодня ~23 — уже старше, чем был Джим при рождении дочери Джули (~21), и за два года до возраста, в котором Джим основал компанию (25)."}, why:{en:"Eldest son with Parvina; usually named the successor.", ru:"Старший сын от Парвины; обычно называют преемником."}}},
+    {n:"William", k:"william", st:"cast", r:{en:"Son, with Parvina · born ~2005 · today ~21", ru:"Сын, от Парвины · род. ~2005 · сегодня ~21"}, prof:{parallel:{en:"Today ~21 — the age Jim was back from Vietnam, selling insurance door to door (1966).", ru:"Сегодня ~21 — возраст, в котором Джим вернулся из Вьетнама и продавал страховки по домам (1966)."}, why:{en:"Son with Parvina; with Jimmy, usually named as a successor.", ru:"Сын от Парвины; вместе с Джимми обычно называют преемником."}}},
+    {n:"Darius", k:"darius", st:"cast", r:{en:"Youngest son, with Parvina · born ~2009 · today ~17", ru:"Младший сын, от Парвины · род. ~2009 · сегодня ~17"}, prof:{parallel:{en:"Today ~17 — the exact age Jim was in 1962 when a gun was first pointed at him (the robbery). What forged Jim's empathy through fear, Darius lives out in the safety Jim built.", ru:"Сегодня ~17 — ровно возраст Джима в 1962-м, когда на него впервые навели пистолет (ограбление). То, что выковало эмпатию Джима через страх, Дариус проживает в безопасности, которую построил Джим."}, why:{en:"Youngest son with Parvina; part of the succession the refusal protects.", ru:"Младший сын от Парвины; часть преемственности, которую защищает отказ."}}},
+    {n:"Lila", k:"lila", st:"cast", r:{en:"Daughter, with Parvina · born ~2007 · today ~19", ru:"Дочь, от Парвины · род. ~2007 · сегодня ~19"}, prof:{parallel:{en:"Today ~19 — the age Jim was landing at Da Nang in the first wave (Vietnam, 1964–65).", ru:"Сегодня ~19 — возраст, в котором Джим высаживался в Дананге первой волной (Вьетнам, 1964–65)."}, why:{en:"The only daughter with Parvina.", ru:"Единственная дочь от Парвины."}}},
     {n:"Jim's sister", k:"sister", st:"archive", r:{en:"A year younger; passed in 2024 shortly after retiring.", ru:"На год младше; её не стало в 2024-м вскоре после выхода на пенсию."}, have:{en:"At least one photograph (Jim and his sister). Family memory. To gather: her name, more photos, and — with the family's blessing — how gently to touch her 2024 passing on screen.", ru:"Есть как минимум одно фото (Джим с сестрой). Семейная память. Собрать: её имя, ещё фото и — с согласия семьи — как бережно коснуться её ухода 2024-го в кадре."}},
     {n:"Jim's father", k:"father", st:"archive", r:{en:"Railroad worker, often away; remarried Eileen after Jim's mother left.", ru:"Работал на ж/д, часто в отъезде; женился на Эйлин после ухода матери."}, have:{en:"A photograph — 'James Mastin Glidewell, 1942' (on the timeline). His story is thin in our sources — to gather: more photos and any records.", ru:"Фотография — «James Mastin Glidewell, 1942» (на линии). История в наших источниках скудна — собрать: ещё фото и любые записи."}}
   ]},
@@ -1911,8 +1913,9 @@ function openPersonalities(keep){
     if(pp.role){ return '<div class="pers-card sv-card roster role" data-cprof="'+k+'">'
       +'<div class="pc-tx"><div class="pc-nm" data-cprof="'+k+'" title="'+L({en:'Open role',ru:'Открыть роль'})+'">'+pp.n+' '+tag('role')+'</div><div class="pc-role">'+L(pp.r)+'</div></div></div>'; }
     var svBits=k?'<div class="sv-fams">'+famHTML(k,a)+'</div>'+conn(k,a):'';
+    var nm=pp.prof?'<div class="pc-nm cprof" data-cprof="'+k+'" title="'+L({en:'Open profile',ru:'Открыть профиль'})+'">'+pp.n+' '+tag(pp.st||'cast')+'</div>':'<div class="pc-nm">'+pp.n+' '+tag(pp.st||'cast')+'</div>';
     return '<div class="pers-card sv-card roster">'
-      +'<div class="pc-tx"><div class="pc-nm">'+pp.n+' '+tag(pp.st||'cast')+'</div><div class="pc-role">'+L(pp.r)+'</div>'+svBits+'</div></div>';
+      +'<div class="pc-tx">'+nm+'<div class="pc-role">'+L(pp.r)+'</div>'+svBits+'</div></div>';
   }
   const groups=CAST.map(g=>'<div class="cast-group"><h3 class="cast-gh">'+L(g.g)+'</h3><div class="pers-grid sv-grid">'+g.people.map(card).join('')+'</div></div>').join('');
   pin.innerHTML='<div class="kicker">'+L({en:'Cast · by circle',ru:'Каст · по кругам'})+'</div>'
@@ -1923,9 +1926,12 @@ function openPersonalities(keep){
   show();
 }
 function openRole(k,keep){ var e=CP[k]; if(!e||!e.prof)return; if(!keep)openRef={type:'role',id:k}; clearPin(); var pr=e.prof;
-  pin.innerHTML='<div class="kicker">'+L({en:'Role · to define & find',ru:'Роль · определить и найти'})+' · <span class="pers-back" data-go-pers="1">'+L(UI.allPers)+'</span></div>'
+  var kick=e.role?{en:'Role · to define & find',ru:'Роль · определить и найти'}:{en:'Cast · profile',ru:'Каст · профиль'};
+  pin.innerHTML='<div class="kicker">'+L(kick)+' · <span class="pers-back" data-go-pers="1">'+L(UI.allPers)+'</span></div>'
     +'<h2>'+e.n+'</h2><div class="role">'+L(e.r)+'</div>'
     +'<dl>'
+    +(pr.parallel?'<dt>'+L({en:'Age parallel to Jim',ru:'Возрастная параллель с Джимом'})+'</dt><dd>'+L(pr.parallel)+'</dd>':'')
+    +(pr.why?'<dt>'+L({en:'Why they matter to the film',ru:'Чем важен фильму'})+'</dt><dd>'+L(pr.why)+'</dd>':'')
     +(pr.purpose?'<dt>'+L({en:'What the role is for',ru:'Для чего эта роль'})+'</dt><dd>'+L(pr.purpose)+'</dd>':'')
     +(pr.reveal?'<dt>'+L({en:'What they could reveal about Jim',ru:'Что может раскрыть о Джиме'})+'</dt><dd>'+L(pr.reveal)+'</dd>':'')
     +(pr.find?'<dt>'+L({en:'How to find them — options',ru:'Как найти — варианты'})+'</dt><dd>'+L(pr.find)+'</dd>':'')
