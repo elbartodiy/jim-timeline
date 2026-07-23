@@ -96,6 +96,14 @@
   .morep:hover{box-shadow:0 4px 14px rgba(19,23,27,.10);transform:translateY(-2px)}
   .morep .mp-ttl{font-family:var(--body);font-size:13px;font-weight:600;color:var(--navy)}
   .morep .mp-sub{font-family:var(--mono);font-size:10px;color:var(--mute);margin-top:2px}
+  .cast-group{margin:16px 0 4px}
+  .cast-gh{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 9px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .pers-card.roster.arch{opacity:.66}
+  .st-tag{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:9px;vertical-align:middle;margin-left:5px;border:1px solid var(--line);color:var(--mute);font-weight:500}
+  .st-tag.st-line{color:var(--ok);border-color:var(--ok)}
+  .st-tag.st-cast,.st-tag.st-id{color:var(--warn);border-color:var(--warn)}
+  .st-tag.st-off{color:var(--mute)}
+  .st-tag.st-archive{color:var(--slate);border-color:var(--slate)}
   .linelegend{position:absolute;z-index:5;font-family:var(--mono);white-space:nowrap}
   .linelegend .lgnd-ttl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
   .lgnd-row{display:flex;align-items:center;gap:8px;font-size:11px;white-space:nowrap;color:var(--ink-2);cursor:pointer;padding:2px 5px;border-radius:5px;transition:background .15s}
@@ -1021,23 +1029,46 @@ const SPK = {
     access:{en:"Unknown whether living or reachable — do not use her name for the unresolved negative characterization without direct confirmation.",ru:"Неизвестно, жива ли и доступна ли — не использовать её имя для несведённой негативной характеристики без прямого подтверждения."}},
 };
 
-const MORE_PEOPLE = [
-  { g:{en:"Proposed · on-camera (not yet on the line)", ru:"Предложено · в кадр (нет на линии)"},
-    people:[
-      {n:"Dr. Suzanne Thaler", r:{en:"Jim's dentist, present day — a small human irony worth one honest shot: the crown-maker's own crowns. Kept off the timeline for now.", ru:"Стоматолог Джима, настоящее время — маленькая человеческая ирония на один честный кадр: коронки создателя коронок. Пока снята с линии."}},
-      {n:"Julie", r:{en:"Eldest daughter — from Jim's first marriage, born when Jim was 21", ru:"Старшая дочь — от первого брака Джима, родилась, когда Джиму был 21 год"}},
-      {n:"Lila", r:{en:"Daughter, with Parvina", ru:"Дочь, от брака с Парвиной"}},
-      {n:"Darius", r:{en:"Son, with Parvina", ru:"Сын, от брака с Парвиной"}},
-      {n:"Jimmy", r:{en:"Son, with Parvina — potential future heir, future of the company", ru:"Сын, от брака с Парвиной — потенциальный наследник, будущее компании"}},
-      {n:"William", r:{en:"Son, with Parvina — potential future heir, future of the company", ru:"Сын, от брака с Парвиной — потенциальный наследник, будущее компании"}}
-    ]},
-  { g:{en:"Proposed · advisors and unnamed figures (not yet identified)", ru:"Предложено · советники и неустановленные фигуры (пока не определены)"},
-    people:[
-      {n:"Jim's father", r:{en:"Unnamed in our materials — worked on the railroad, often away; remarried to Eileen after Jim's mother left", ru:"Не назван в материалах — работал на железной дороге, часто отсутствовал; женился повторно на Эйлин после ухода матери Джима"}},
-      {n:"Jim's sister", r:{en:"Unnamed in our materials — a year younger than Jim; died in 2024 shortly after retiring", ru:"Не названа в материалах — на год младше Джима; умерла в 2024-м вскоре после выхода на пенсию"}},
-      {n:"Voice of the world — banker/consultant advocating the IPO", r:{en:"Uncast, open casting need — whoever would voice the case-for-IPO in Act I of The Offer", ru:"Не найден, открытая потребность в кастинге — кто озвучит аргументы за IPO в Акте I The Offer"}}
-    ]}
+const CAST = [
+  { g:{en:"Family — intimate access", ru:"Семья — интимный доступ"}, people:[
+    {id:"parvina"},
+    {id:"eileen"},
+    {n:"Julie", k:"julie", st:"cast", r:{en:"Eldest daughter (Jim's first marriage, born when he was 21) — the early Jim.", ru:"Старшая дочь (первый брак, родилась когда Джиму был 21) — ранний Джим."}},
+    {n:"Jimmy", k:"jimmy", st:"cast", r:{en:"Son, with Parvina — potential heir; the vector of 'where it leads'.", ru:"Сын, от брака с Парвиной — потенциальный наследник; вектор «куда ведёт»."}},
+    {n:"William", k:"william", st:"cast", r:{en:"Son, with Parvina — potential heir; the vector of 'where it leads'.", ru:"Сын, от брака с Парвиной — потенциальный наследник; вектор «куда ведёт»."}},
+    {n:"Darius", k:"darius", st:"cast", r:{en:"Son, with Parvina.", ru:"Сын, от брака с Парвиной."}},
+    {n:"Lila", k:"lila", st:"cast", r:{en:"Daughter, with Parvina.", ru:"Дочь, от брака с Парвиной."}},
+    {n:"Jim's sister", st:"archive", r:{en:"A year younger; died 2024 shortly after retiring — memory/archive only.", ru:"На год младше; умерла в 2024 вскоре после пенсии — только память/архив."}},
+    {n:"Jim's father", st:"archive", r:{en:"Railroad worker, often away; remarried Eileen after Jim's mother left — archive.", ru:"Работал на ж/д, часто в отъезде; женился на Эйлин после ухода матери — архив."}}
+  ]},
+  { g:{en:"Company long-timers & culture", ru:"Долгожители компании и культура"}, people:[
+    {id:"phil"},
+    {n:"Daryl", k:"daryl", st:"cast", r:{en:"~33 years at Glidewell; the 'history keeper' — needed for chronological accuracy.", ru:"~33 года в Glidewell; «хранитель истории» — нужен для точности хронологии."}},
+    {n:"Marketing lead (~30 yrs)", k:"mktg30", st:"id", r:{en:"Unnamed woman from the meeting — 'I tell stories about Jim'; the culture, why people stay.", ru:"Безымянная женщина со встречи — «рассказываю истории про Джима»; культура, почему остаются."}}
+  ]},
+  { g:{en:"Witnesses to specific events", ru:"Свидетели конкретных событий"}, people:[
+    {id:"fifichow"},
+    {n:"Togi", k:"togi", st:"cast", r:{en:"Witness to the sleepless 2009 — Jim pacing at 2am, worried about the economy (spelling to confirm).", ru:"Свидетель бессонного 2009 — Джим бродил в 2 ночи, переживал за экономику (написание уточнить)."}},
+    {n:"Navy shipmate", k:"navy", st:"cast", r:{en:"Vietnam — a fellow serviceman to corroborate the Da Nang / carrying-the-wounded story. To find.", ru:"Вьетнам — сослуживец, кто подтвердит Дананг / «нёс раненого». Найти."}},
+    {n:"Richard Papel", k:"papel", st:"cast", r:{en:"Specialty-glass partner (~1989) on the lithium glass that became e.max — verifiable via patents. Find / is he living.", ru:"Партнёр по стеклу (~1989) — литиевое стекло, ставшее e.max; проверяемо по патентам. Найти / жив ли."}}
+  ]},
+  { g:{en:"External / industry — impact & legacy", ru:"Внешние / индустрия — импакт и наследие"}, people:[
+    {n:"Gordon Christensen", k:"christensen", st:"cast", r:{en:"KOL who resisted digital for years then came around — a voice on the revolution Jim drove.", ru:"KOL, годами сопротивлялся цифре, потом принял — голос о революции, которую двигал Джим."}},
+    {n:"Frank Spear", k:"spear", st:"cast", r:{en:"Industry figure (Spear Education) — external standing on Jim's place in dentistry.", ru:"Фигура индустрии (Spear Education) — внешний взгляд на место Джима в стоматологии."}},
+    {n:"Steve (from Maine)", k:"steve", st:"cast", r:{en:"Superfan: read the book cover to cover, flew out to shake Jim's hand — living proof of the 'legend'.", ru:"Суперфан: прочёл книгу от корки до корки, прилетел пожать руку — живое свидетельство «легенды»."}},
+    {n:"Glenn & Mindy Stearns", k:"stearns", st:"cast", r:{en:"Friends / fellow founders (Undercover Boss) — a peer's view on handing over and legacy.", ru:"Друзья / фаундеры (Undercover Boss) — взгляд ровни на передачу дела и наследие."}}
+  ]},
+  { g:{en:"Dramatic roles — open casting", ru:"Драматические роли — открытый кастинг"}, people:[
+    {n:"The antagonist — IPO advocate", k:"antag", st:"cast", r:{en:"Presses the case FOR the offer (candidate: the living exec 'Rob' — NOT the late Rob Grice). The pressure Jim pushes back against.", ru:"Давит ЗА предложение (кандидат: живой руководитель «Роб» — НЕ покойный Роб Грайс). Давление, против которого Джим отбивается."}},
+    {n:"Dr. Suzanne Thaler", k:"thaler", st:"off", r:{en:"Jim's dentist — the crown-maker's own crowns. Kept off the timeline for now.", ru:"Стоматолог Джима — коронки создателя коронок. Пока снята с линии."}}
+  ]},
+  { g:{en:"Archive only — deceased", ru:"Только архив — умершие"}, people:[
+    {n:"Rob Grice", st:"archive", r:{en:"CFO / right hand, 'the most respected person after my father'. Voice via interviews/photos; others tell of him.", ru:"CFO / правая рука, «самый уважаемый после отца». Голос — через интервью/фото; о нём рассказывают другие."}},
+    {n:"Donald Lathrop", st:"archive", r:{en:"The 1962 robber — killed a police officer a week later, died in the shootout.", ru:"Грабитель 1962-го — через неделю убил полицейского, погиб в перестрелке."}},
+    {n:"Johnny Rappilo", st:"archive", r:{en:"Archive figure from the materials.", ru:"Архивная фигура из материалов."}}
+  ]}
 ];
+const CAST_NM={}; CAST.forEach(function(g){g.people.forEach(function(p){ if(p.k)CAST_NM[p.k]=p.n; });});
 
 const SPK_IMG={};
 
@@ -1428,8 +1459,7 @@ function buildLayer(){
         +'<span class="pin-lbl hi">'+L(B.nm)+'</span></div>';
     }
   });
-  h+='<div class="morep" data-pers="1" style="left:88px;top:116px"><div class="mp-ttl">'+L(UI.persBtnTitle)+'</div><div class="mp-sub">'+L(UI.persSub)+' · '+Object.keys(SPK).length+'</div></div>';
-  h+='<div class="morep" data-morep="1" style="left:88px;top:168px"><div class="mp-ttl">'+L(UI.moreBtnTitle)+'</div><div class="mp-sub">'+L(UI.moreSub)+' · '+MORE_PEOPLE.reduce((a,b)=>a+b.people.length,0)+'</div></div>';
+  h+='<div class="morep" data-pers="1" style="left:88px;top:132px"><div class="mp-ttl">'+L({en:"Cast — the personalities",ru:"Персоналии — весь каст"})+'</div><div class="mp-sub">'+L({en:"by circle",ru:"по кругам"})+' · '+CAST.reduce((a,b)=>a+b.people.length,0)+'</div></div>';
   // --- Archival book-photo placement helpers (yToX) — company "territory/employees" markers removed ---
   (function(){
     const py=v=>{ v=String(v); if(/today|now|present/i.test(v))return 2026; const m=v.match(/(\d{4})/); if(m)return +m[1]; const d=v.match(/(\d0)s/); if(d){let b=+d[1]; return (b<=30?2000:1900)+b;} return 1970; };
@@ -1806,15 +1836,7 @@ function openScene(k,keep){
 }
 // No confirmed photos yet for the personal-film MORE_PEOPLE roster.
 const MORE_IMG={};
-  function openMorePeople(keep){
-  if(!keep)openRef={type:'morepeople'}; clearPin();
-  const blocks=MORE_PEOPLE.map(b=>'<dt>'+L(b.g)+'</dt><dd>'+b.people.map(p=>'<div class="mp-row">'+(MORE_IMG[p.n]?'<img class="mp-av" src="'+MORE_IMG[p.n]+'" alt="">':'')+'<div class="mp-tx"><b>'+p.n+'</b>'+(p.r?' — '+L(p.r):'')+'</div></div>').join('')+'</dd>').join('');
-  pin.innerHTML='<div class="kicker">'+L(UI.moreKicker)+'</div>'
-    +'<h2>'+L(UI.moreTitle)+'</h2>'
-    +'<p class="scdesc">'+L(UI.moreIntro)+'</p>'
-    +'<dl>'+blocks+'</dl>';
-  show();
-}
+  function openMorePeople(keep){ openPersonalities(keep); }
 // ===== Speaker-connections survey (lives inside the Personalities panel) =====
 const SURVEY_ENDPOINT="https://script.google.com/macros/s/AKfycbz0Q_R7Em__E-_HB48QxGogA9AcBl0Lrd_OnEqbiEoHq4E7oZv9ykoV2WtD7CX5KYsM/exec"; // Jim-timeline visit/survey receiver (Google Apps Script)
 // Visit log: one silent ping per page load. Named links (…/?u=bobbie) tag who; no ?u → "anon".
@@ -1842,7 +1864,7 @@ function svEsc(s){ return String(s||'').replace(/"/g,'&quot;').replace(/</g,'&lt
 function svSubmit(){
   const d=svLoad(), st=document.getElementById('sv-status');
   const rows=Object.keys(d.answers||{}).filter(id=>d.answers[id]&&(d.answers[id].fam||d.answers[id].connect))
-    .map(id=>({id:id, name:SPK[id]?SPK[id].nm:id, familiarity:d.answers[id].fam||'', connect:d.answers[id].connect||''}));
+    .map(id=>({id:id, name:SPK[id]?SPK[id].nm:(CAST_NM[id]||id), familiarity:d.answers[id].fam||'', connect:d.answers[id].connect||''}));
   if(!d.name||!d.name.trim()){ if(st)st.textContent=L({en:'Enter your name first.',ru:'Сначала впишите имя.'}); return; }
   if(!rows.length){ if(st)st.textContent=L({en:'Mark at least one person.',ru:'Отметьте хотя бы одного.'}); return; }
   const payload={respondent:d.name.trim(), answers:rows};
@@ -1855,22 +1877,28 @@ function svSubmit(){
 function openPersonalities(keep){
   if(!keep)openRef={type:'personalities'}; clearPin();
   const sv=svLoad();
-  const cards=Object.keys(SPK).map(function(id){var sp=SPK[id]; var a=(sv.answers&&sv.answers[id])||{};
-    var connected=!!SURVEY_CONNECTED[id];
-    var fam=connected
-      ? '<span class="sv-connected">'+L({en:'Connected',ru:'На связи'})+'</span>'
-      : SURVEY_FAM.map(f=>'<button type="button" class="sv-fam'+(a.fam===f.v?' on':'')+'" data-sv-id="'+id+'" data-sv-fam="'+f.v+'">'+L(f)+'</button>').join('');
-    return '<div class="pers-card sv-card">'
-      +(SPK_IMG[id]?'<img src="'+SPK_IMG[id]+'" alt="" data-go="'+id+'" title="'+L({en:'Open profile',ru:'Открыть профиль'})+'">':'')
-      +'<div class="pc-tx"><div class="pc-nm" data-go="'+id+'" title="'+L({en:'Open profile',ru:'Открыть профиль'})+'">'+sp.nm+gwBadge(sp)+'</div><div class="pc-role">'+L(sp.role)+'</div>'
-      +'<div class="sv-fams">'+fam+'</div>'
-      +(connected?'':'<input class="sv-connect" data-sv-id="'+id+'" placeholder="'+L({en:'Can you connect / via whom?',ru:'Могу свести / через кого?'})+'" value="'+svEsc(a.connect)+'">')
-      +'</div></div>';
-  }).join('');
-  pin.innerHTML='<div class="kicker">'+L(UI.persKicker)+'</div>'
-    +'<h2>'+L({en:'Speaker connections — survey',ru:'Связи со спикерами — опрос'})+'</h2>'
-    +'<p class="scdesc">'+L({en:'For each person: how well you know them, and whether you can connect us for an interview. Fill once, one Send.',ru:'По каждому: насколько знаете и можете ли свести для интервью. Заполните один раз, одна «Отправить».'})+'</p>'
-    +'<div class="pers-grid sv-grid">'+cards+'</div>'
+  const STL={line:{en:'on the line',ru:'на линии'},cast:{en:'to find / invite',ru:'найти / пригласить'},id:{en:'to identify',ru:'установить имя'},off:{en:'off the line',ru:'снят с линии'},archive:{en:'archive',ru:'архив'}};
+  function famHTML(id,a){ return SURVEY_FAM.map(f=>'<button type="button" class="sv-fam'+(a.fam===f.v?' on':'')+'" data-sv-id="'+id+'" data-sv-fam="'+f.v+'">'+L(f)+'</button>').join(''); }
+  function conn(id,a){ return '<input class="sv-connect" data-sv-id="'+id+'" placeholder="'+L({en:'Can you connect / via whom?',ru:'Могу свести / через кого?'})+'" value="'+svEsc(a.connect||'')+'">'; }
+  function tag(st){ return '<span class="st-tag st-'+st+'">'+L(STL[st]||STL.cast)+'</span>'; }
+  function card(pp){
+    if(pp.id){ var sp=SPK[pp.id], a=(sv.answers&&sv.answers[pp.id])||{}, connected=!!SURVEY_CONNECTED[pp.id];
+      var fam=connected?'<span class="sv-connected">'+L({en:'Connected',ru:'На связи'})+'</span>':famHTML(pp.id,a);
+      return '<div class="pers-card sv-card">'
+        +(SPK_IMG[pp.id]?'<img src="'+SPK_IMG[pp.id]+'" alt="" data-go="'+pp.id+'" title="'+L({en:'Open profile',ru:'Открыть профиль'})+'">':'')
+        +'<div class="pc-tx"><div class="pc-nm" data-go="'+pp.id+'" title="'+L({en:'Open profile',ru:'Открыть профиль'})+'">'+sp.nm+gwBadge(sp)+' '+tag('line')+'</div><div class="pc-role">'+L(sp.role)+'</div>'
+        +'<div class="sv-fams">'+fam+'</div>'+(connected?'':conn(pp.id,a))+'</div></div>';
+    }
+    var isArch=(pp.st==='archive'); var k=pp.k||''; var a=(k&&sv.answers&&sv.answers[k])||{};
+    var svBits=(!isArch&&k)?'<div class="sv-fams">'+famHTML(k,a)+'</div>'+conn(k,a):'';
+    return '<div class="pers-card sv-card roster'+(isArch?' arch':'')+'">'
+      +'<div class="pc-tx"><div class="pc-nm">'+pp.n+' '+tag(pp.st||'cast')+'</div><div class="pc-role">'+L(pp.r)+'</div>'+svBits+'</div></div>';
+  }
+  const groups=CAST.map(g=>'<div class="cast-group"><h3 class="cast-gh">'+L(g.g)+'</h3><div class="pers-grid sv-grid">'+g.people.map(card).join('')+'</div></div>').join('');
+  pin.innerHTML='<div class="kicker">'+L({en:'Cast · by circle',ru:'Каст · по кругам'})+'</div>'
+    +'<h2>'+L({en:'Cast — who can tell the story',ru:'Персоналии — кто расскажет историю'})+'</h2>'
+    +'<p class="scdesc">'+L({en:'Everyone who can carry a piece of Jim\'s story, grouped by circle; the tag shows status. Know someone? Mark how well and whether you can connect us — one Send at the bottom.',ru:'Все, кто может нести кусок истории Джима, по кругам; тег — статус. Знаете кого-то? Отметьте, насколько, и можете ли свести — одна «Отправить» внизу.'})+'</p>'
+    +groups
     +'<div class="sv-foot"><input class="sv-name" placeholder="'+L({en:'Your name',ru:'Ваше имя'})+'" value="'+svEsc(sv.name)+'"><button type="button" class="sv-send" id="sv-send">'+L({en:'Send',ru:'Отправить'})+'</button><span class="sv-status" id="sv-status"></span></div>';
   show();
 }
@@ -1887,7 +1915,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(lightbox.classLi
 stage.addEventListener('click',e=>{
   const lp=e.target.closest('.line-photo'); if(lp){ if(lp.dataset.film){window.open(lp.dataset.film,'_blank','noopener');return;} if(lp.dataset.archive){openArchive();return;} openLightbox(lp.dataset.src||(lp.querySelector('img')||{}).src, lp.dataset.cap||''); return;}
   const ft=e.target.closest('.frame-thumb'); if(ft){openScene(+ft.dataset.frameScene);return;}
-  const mp=e.target.closest('.morep'); if(mp){mp.dataset.pers?openPersonalities():openMorePeople();return;}
+  const mp=e.target.closest('.morep'); if(mp){openPersonalities();return;}
   const bk=e.target.closest('.beatblk,.beatpin'); if(bk){openBeatSheet(+bk.dataset.beatSheet);return;}
   const ce=e.target.closest('.cal-ev'); if(ce){openCalEvent(+ce.dataset.cal);return;}
   const cm=e.target.closest('.cal-month'); if(cm){openCalMonth(+cm.dataset.calMonth);return;}
