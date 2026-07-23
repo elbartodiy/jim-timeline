@@ -601,6 +601,7 @@
 <script>
 let lang = "en";
 function L(v){ return (v && typeof v==="object" && ("en" in v)) ? (v[lang]||v.en) : v; }
+function jimAge(y){ var s=String(y); var ms=s.match(/(\d{4})/); if(!ms) return ''; var start=+ms[1], sa=start-1945; if(sa<0) return ''; var rest=s.slice(s.indexOf(ms[1])+4); var me=rest.match(/^\s*[–—-]\s*(\d{2,4})/); var lbl=''+sa; if(me){ var e=me[1], ey=e.length===4?+e:(start-start%100+ +e); if(ey<start)ey+=100; var ea=ey-1945; if(ea!==sa)lbl=sa+'–'+ea; } return lang==='ru' ? (' · '+lbl+' л.') : (' · age '+lbl); }
 
 const AIMOS_LOGO="aimos-logo.jpg";
 const UI = {
@@ -1409,7 +1410,7 @@ function buildLayer(){
     h+='<div class="ev t-'+b.tr+' tier-'+(b.tier||3)+'" style="left:'+b.x+'px;top:'+(LINEY+28)+'px" data-beat="'+i+'">'
       +(b.star?'<span class="star">'+L(b.star)+'</span>':'')
       +(b.sc&&b.sc.length?'<div class="sc">'+b.sc.map(n=>'#'+n).join(' ')+'</div>':'')
-      +'<div class="yr">'+b.y+'</div><h3>'+L(b.t)+'</h3><div class="d">'+L(b.d)+'</div><div class="th">'+L(b.th)+'</div></div>';
+      +'<div class="yr">'+b.y+jimAge(b.y)+'</div><h3>'+L(b.t)+'</h3><div class="d">'+L(b.d)+'</div><div class="th">'+L(b.th)+'</div></div>';
   });
   // storyboard scene blocks — wide labeled segments with energy arrows + pillar dots (sbnd is global)
   for(let k=1;k<=14;k++){
@@ -1619,7 +1620,7 @@ function openBeat(i,keep){
     ? '<dt>'+L(UI.whoCanTell)+'</dt><dd><div class="who">'+arr.map(s=>'<button data-go="'+s.id+'">'+s.nm+'</button>').join('')+'</div></dd>'
     : '<dt>'+L(UI.whoCanTell)+'</dt><dd style="color:var(--mute)">'+L(UI.noSpk)+'</dd>';
   pin.innerHTML='<div class="kicker">'+L(UI.trk[b.tr])+(b.star?' · '+L(b.star):'')+'</div>'
-    +'<h2>'+b.y+' — '+L(b.t)+'</h2>'
+    +'<h2>'+b.y+jimAge(b.y)+' — '+L(b.t)+'</h2>'
     +'<dl><dt>'+L(UI.whatHappened)+'</dt><dd>'+L(b.d)+'</dd>'
     +'<dt>'+L(UI.themeMeaning)+'</dt><dd style="color:var(--teal);font-style:italic">'+L(b.th)+'</dd>'
     +(b.full?'<dt>'+L(UI.fullStory)+'</dt><dd style="font-size:12px;line-height:1.5">'+L(b.full)+'</dd>':'')
