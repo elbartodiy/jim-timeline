@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#13171B;--ink-2:#4A555F;--paper:#E4DBCB;--card:#FFFFFF;--line:#E4E8EC;
+    --ink:#13171B;--ink-2:#4A555F;--paper:#F1ECE2;--card:#FFFFFF;--line:#E4E8EC;
     --navy:#1C2024;--slate:#9098A0;--teal:#137C7C;--clay:#E11B2A;
     --red:#E11B2A;--red-bright:#F5404B;--red-tint:#FCEDEE;
     --ok:#1F7A57;--warn:#B07A16;--mute:#8A929B;
@@ -83,7 +83,7 @@
   .dot.g-g{background:var(--clay)} .dot.g-x,.dot.g-k,.dot.g-e{display:none}
 
   .ev{position:absolute;transform:translateX(-50%);width:226px;background:var(--card);border:1px solid var(--line);
-    border-radius:8px;border-top:3px solid var(--navy);padding:12px 13px;cursor:pointer;transition:box-shadow .15s,transform .15s,opacity .15s;z-index:4}
+    border-radius:8px;border-top:3px solid var(--navy);padding:12px 13px;cursor:pointer;box-shadow:0 2px 9px rgba(19,23,27,.07);transition:box-shadow .15s,transform .15s,opacity .15s;z-index:4}
   .ev.t-i{border-top-color:var(--slate)} .ev.t-m{border-top-color:var(--teal)}
   .ev:hover,.ev.hl{box-shadow:0 6px 20px rgba(19,23,27,.10);transform:translateX(-50%) translateY(-3px)}
   .ev .yr{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--navy)}
@@ -548,25 +548,6 @@
   .line-photo{cursor:zoom-in}
   @media(prefers-reduced-motion:reduce){#lightbox,#lightbox figure{transition:none}}
 
-  /* ===== Soft "embedded" (neumorphic) canvas — ported from the company line, warm-cream palette ===== */
-  #scroller{ --nm-lo:rgba(163,147,120,.62); --nm-hi:rgba(255,252,244,.86); --card:#EDE6D7; background:#D6CCB7; }
-  #scroller .stage{ background:transparent }
-  /* nodes = soft embossed warm beads */
-  #scroller .nd{ stroke:#F3EEE4; stroke-width:3px; filter:drop-shadow(1.5px 1.5px 3px rgba(193,180,158,.75)) drop-shadow(-1.5px -1.5px 2px rgba(255,253,247,.9)) }
-  #scroller .nd.t-g,#scroller .nd.t-i,#scroller .nd.t-m{ fill:#FCF8F1 }
-  #scroller .nd:hover{ r:9 }
-  #scroller .nd.hl{ fill:var(--clay); stroke:#FBEBEC; filter:drop-shadow(0 2px 6px rgba(225,27,42,.4)) }
-  /* milestone cards = pillowy raised panels; no hard border; soft top accent */
-  #scroller .ev{ background:var(--card); border:0; border-radius:16px; box-shadow:7px 7px 18px var(--nm-lo),-7px -7px 16px var(--nm-hi) }
-  #scroller .ev::before{ content:""; position:absolute; left:14px; right:14px; top:0; height:3px; border-radius:0 0 3px 3px; background:var(--navy); opacity:.9 }
-  #scroller .ev.t-i::before{ background:var(--slate) } #scroller .ev.t-m::before{ background:var(--teal) }
-  #scroller .ev:hover,#scroller .ev.hl{ box-shadow:9px 9px 24px var(--nm-lo),-9px -9px 20px var(--nm-hi); transform:translateX(-50%) translateY(-3px) }
-  /* roster pill + legend + photos = soft raised */
-  #scroller .morep{ background:var(--card); border:0; border-radius:14px; box-shadow:6px 6px 16px var(--nm-lo),-6px -6px 14px var(--nm-hi) }
-  #scroller .morep:hover{ box-shadow:8px 8px 20px var(--nm-lo),-8px -8px 18px var(--nm-hi) }
-  #scroller .linelegend{ background:var(--card); border-radius:14px; padding:11px 14px; box-shadow:6px 6px 16px var(--nm-lo),-6px -6px 14px var(--nm-hi) }
-  #scroller .line-photo,#scroller .frame-thumb{ border:0; border-radius:12px; box-shadow:6px 6px 16px var(--nm-lo),-6px -6px 14px var(--nm-hi) }
-  #scroller .eraband{ fill:#3A332A; opacity:.02 }
 </style>
 </head>
 <body>
