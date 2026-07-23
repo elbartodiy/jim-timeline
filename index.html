@@ -107,6 +107,10 @@
   .st-tag.st-cast,.st-tag.st-id{color:var(--warn);border-color:var(--warn)}
   .st-tag.st-off{color:var(--mute)}
   .st-tag.st-archive{color:var(--slate);border-color:var(--slate)}
+  .st-tag.st-role{color:var(--slate);border-color:var(--slate);border-style:dashed}
+  .pers-card.role{cursor:pointer;border:1.5px dashed var(--slate);background:transparent;transition:box-shadow .15s,transform .15s,border-color .15s}
+  .pers-card.role:hover{border-color:var(--red);box-shadow:0 4px 14px rgba(19,23,27,.09);transform:translateY(-2px)}
+  .pers-card.role .pc-nm{cursor:pointer}
   .linelegend{position:absolute;z-index:5;font-family:var(--mono);white-space:nowrap}
   .linelegend .lgnd-ttl{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
   .lgnd-row{display:flex;align-items:center;gap:8px;font-size:11px;white-space:nowrap;color:var(--ink-2);cursor:pointer;padding:2px 5px;border-radius:5px;transition:background .15s}
@@ -1066,7 +1070,7 @@ const CAST = [
   { g:{en:"Witnesses to specific events", ru:"Свидетели конкретных событий"}, people:[
     {id:"fifichow"},
     {n:"Togi", k:"togi", st:"cast", r:{en:"Witness to the sleepless 2009 — Jim pacing at 2am, worried about the economy (spelling to confirm).", ru:"Свидетель бессонного 2009 — Джим бродил в 2 ночи, переживал за экономику (написание уточнить)."}},
-    {n:"Navy shipmate", k:"navy", st:"cast", r:{en:"Vietnam — a fellow serviceman to corroborate the Da Nang / carrying-the-wounded story. To find.", ru:"Вьетнам — сослуживец, кто подтвердит Дананг / «нёс раненого». Найти."}},
+    {n:"Navy shipmate (Vietnam)", k:"navy", st:"role", role:true, r:{en:"A serviceman who was there with Jim — a role to find, not a named person yet.", ru:"Сослуживец, бывший рядом с Джимом — роль, конкретного человека пока нет."}, prof:{purpose:{en:"Anchors the Vietnam beat with an outside witness, so it isn't only Jim narrating his own trauma.", ru:"Заземляет вьетнамский бит сторонним свидетелем — чтобы травму рассказывал не только сам Джим."}, reveal:{en:"What Jim was like at 19–21 under fire; corroboration of the first-wave Da Nang landing and the wounded-soldier story; the cost that forged 'empathy as ethics'.", ru:"Каким был Джим в 19–21 под огнём; подтверждение высадки первой волны в Дананге и истории с раненым; цена, выковавшая «эмпатию как этику»."}, find:{en:"First get from Jim: his ship/unit and exact dates (~1964–66). Then search: (1) that ship's/unit's veterans' association and reunion groups; (2) 'first wave, Da Nang, March 1965' Navy/Marine reunion rosters; (3) US Navy service records for his enlistment window. Fallback if none found: archival footage + Jim's own account.", ru:"Сначала взять у Джима: корабль/часть и точные даты (~1964–66). Затем искать: (1) ассоциацию ветеранов этого корабля/части и reunion-группы; (2) ростеры «первая волна, Дананг, март 1965»; (3) записи ВМС по его призыву. Если не найдём — архив + рассказ самого Джима."}}},
     {n:"Richard Papel", k:"papel", st:"cast", r:{en:"Specialty-glass partner (~1989) on the lithium glass that became e.max — verifiable via patents. Find / is he living.", ru:"Партнёр по стеклу (~1989) — литиевое стекло, ставшее e.max; проверяемо по патентам. Найти / жив ли."}}
   ]},
   { g:{en:"External / industry — impact & legacy", ru:"Внешние / индустрия — импакт и наследие"}, people:[
@@ -1076,7 +1080,7 @@ const CAST = [
     {n:"Glenn & Mindy Stearns", k:"stearns", st:"cast", r:{en:"Friends / fellow founders (Undercover Boss) — a peer's view on handing over and legacy.", ru:"Друзья / фаундеры (Undercover Boss) — взгляд ровни на передачу дела и наследие."}}
   ]},
   { g:{en:"Dramatic roles — open casting", ru:"Драматические роли — открытый кастинг"}, people:[
-    {n:"The antagonist — IPO advocate", k:"antag", st:"cast", r:{en:"Presses the case FOR the offer (candidate: the living exec 'Rob' — NOT the late Rob Grice). The pressure Jim pushes back against.", ru:"Давит ЗА предложение (кандидат: живой руководитель «Роб» — НЕ покойный Роб Грайс). Давление, против которого Джим отбивается."}},
+    {n:"The antagonist — IPO advocate", k:"antag", st:"role", role:true, r:{en:"The pressure Jim pushes back against — a role, casting in progress.", ru:"Давление, против которого Джим отбивается — роль, кастинг в процессе."}, prof:{purpose:{en:"Carries the case FOR the offer with real force, so Jim's refusal costs something and the theme is earned, not assumed.", ru:"Несёт аргумент ЗА предложение с реальной силой — чтобы отказ Джима чего-то стоил, а тема была заслужена, не заявлена."}, reveal:{en:"By pressing Jim, pulls the real reasons out of him — turns 'I won't' into 'here's why' and forces the mortality/succession question into the open.", ru:"Давя на Джима, вытягивает из него настоящие причины — превращает «не буду» в «вот почему» и выводит наружу вопрос смертности/преемственности."}, find:{en:"Candidate: the living exec 'Rob' from the meeting (NOT the late Rob Grice) — give him the pusher role. Alternatives: a banker/analyst, or one of the sons voicing the pragmatic case (handle with care, with consent). Shoot it as a real, multi-camera meeting; brief participants minimally so it plays for real.", ru:"Кандидат: живой руководитель «Роб» со встречи (НЕ покойный Роб Грайс) — отдать роль «пушера». Альтернативы: банкир/аналитик или один из сыновей как прагматичный голос (бережно, с согласия). Снимать как реальную мультикамерную встречу; участников минимально предупредить, чтобы играли всерьёз."}}},
     {n:"Dr. Suzanne Thaler", k:"thaler", st:"off", r:{en:"Jim's dentist — the crown-maker's own crowns. Kept off the timeline for now.", ru:"Стоматолог Джима — коронки создателя коронок. Пока снята с линии."}}
   ]},
   { g:{en:"Archive only — deceased", ru:"Только архив — умершие"}, people:[
@@ -1087,6 +1091,7 @@ const CAST = [
 ];
 const CAST_NM={}; CAST.forEach(function(g){g.people.forEach(function(p){ if(p.k)CAST_NM[p.k]=p.n; });});
 const MEM={}; CAST.forEach(function(g){g.people.forEach(function(p){ if(p.st==='archive'&&p.k)MEM[p.k]=p; });});
+const CP={}; CAST.forEach(function(g){g.people.forEach(function(p){ if(p.k)CP[p.k]=p; });});
 
 const SPK_IMG={};
 
@@ -1541,7 +1546,7 @@ function render(){
   buildNav(); buildLegend();
   document.getElementById('v-spine').textContent=L(UI.vSpine);
   document.getElementById('v-full').textContent=L(UI.vFull);
-  if(openRef) openRef.type==='morepeople'?openMorePeople(true):openRef.type==='personalities'?openPersonalities(true):openRef.type==='spk'?openSpeaker(openRef.id,true):openRef.type==='memory'?openMemory(openRef.id,true):openRef.type==='journey'?openJourney(openRef.id,true):openRef.type==='hero'?openHeroMoment(openRef.id,openRef.k,true):openRef.type==='pillar'?openPillar(openRef.id,true):openRef.type==='cal'?openCalEvent(openRef.id,true):openRef.type==='calmonth'?openCalMonth(openRef.id,true):openRef.type==='archive'?openArchive(true):openRef.type==='beatsheet'?openBeatSheet(openRef.id,true):openRef.type==='scene'?openScene(openRef.id,true):openRef.type==='allscenes'?openAllScenes(true):openRef.type==='allheroes'?openAllHeroes(true):openBeat(openRef.id,true);
+  if(openRef) openRef.type==='morepeople'?openMorePeople(true):openRef.type==='personalities'?openPersonalities(true):openRef.type==='spk'?openSpeaker(openRef.id,true):openRef.type==='memory'?openMemory(openRef.id,true):openRef.type==='role'?openRole(openRef.id,true):openRef.type==='journey'?openJourney(openRef.id,true):openRef.type==='hero'?openHeroMoment(openRef.id,openRef.k,true):openRef.type==='pillar'?openPillar(openRef.id,true):openRef.type==='cal'?openCalEvent(openRef.id,true):openRef.type==='calmonth'?openCalMonth(openRef.id,true):openRef.type==='archive'?openArchive(true):openRef.type==='beatsheet'?openBeatSheet(openRef.id,true):openRef.type==='scene'?openScene(openRef.id,true):openRef.type==='allscenes'?openAllScenes(true):openRef.type==='allheroes'?openAllHeroes(true):openBeat(openRef.id,true);
 }
 
 function setHL(bi,on){
@@ -1895,7 +1900,7 @@ function svSubmit(){
 function openPersonalities(keep){
   if(!keep)openRef={type:'personalities'}; clearPin();
   const sv=svLoad();
-  const STL={line:{en:'on the line',ru:'на линии'},cast:{en:'to find / invite',ru:'найти / пригласить'},id:{en:'to identify',ru:'установить имя'},off:{en:'off the line',ru:'снят с линии'},archive:{en:'(in memory)',ru:'(в памяти)'}};
+  const STL={line:{en:'on the line',ru:'на линии'},cast:{en:'to find / invite',ru:'найти / пригласить'},id:{en:'to identify',ru:'установить имя'},off:{en:'off the line',ru:'снят с линии'},role:{en:'role · to cast',ru:'роль · найти'},archive:{en:'(in memory)',ru:'(в памяти)'}};
   function famHTML(id,a){ return SURVEY_FAM.map(f=>'<button type="button" class="sv-fam'+(a.fam===f.v?' on':'')+'" data-sv-id="'+id+'" data-sv-fam="'+f.v+'">'+L(f)+'</button>').join(''); }
   function conn(id,a){ return '<input class="sv-connect" data-sv-id="'+id+'" placeholder="'+L({en:'Can you connect / via whom?',ru:'Могу свести / через кого?'})+'" value="'+svEsc(a.connect||'')+'">'; }
   function tag(st){ return '<span class="st-tag st-'+st+'">'+L(STL[st]||STL.cast)+'</span>'; }
@@ -1910,6 +1915,8 @@ function openPersonalities(keep){
     var isArch=(pp.st==='archive'); var k=pp.k||''; var a=(k&&sv.answers&&sv.answers[k])||{};
     if(isArch){ return '<div class="pers-card sv-card roster arch mem" data-mem="'+k+'">'
       +'<div class="pc-tx"><div class="pc-nm" data-mem="'+k+'" title="'+L({en:'Open — what we have',ru:'Открыть — что у нас есть'})+'">'+pp.n+' '+tag('archive')+'</div><div class="pc-role">'+L(pp.r)+'</div></div></div>'; }
+    if(pp.role){ return '<div class="pers-card sv-card roster role" data-cprof="'+k+'">'
+      +'<div class="pc-tx"><div class="pc-nm" data-cprof="'+k+'" title="'+L({en:'Open role',ru:'Открыть роль'})+'">'+pp.n+' '+tag('role')+'</div><div class="pc-role">'+L(pp.r)+'</div></div></div>'; }
     var svBits=k?'<div class="sv-fams">'+famHTML(k,a)+'</div>'+conn(k,a):'';
     return '<div class="pers-card sv-card roster">'
       +'<div class="pc-tx"><div class="pc-nm">'+pp.n+' '+tag(pp.st||'cast')+'</div><div class="pc-role">'+L(pp.r)+'</div>'+svBits+'</div></div>';
@@ -1920,6 +1927,16 @@ function openPersonalities(keep){
     +'<p class="scdesc">'+L({en:'Everyone who can carry a piece of Jim\'s story, grouped by circle; the tag shows status. Know someone? Mark how well and whether you can connect us — one Send at the bottom.',ru:'Все, кто может нести кусок истории Джима, по кругам; тег — статус. Знаете кого-то? Отметьте, насколько, и можете ли свести — одна «Отправить» внизу.'})+'</p>'
     +groups
     +'<div class="sv-foot"><input class="sv-name" placeholder="'+L({en:'Your name',ru:'Ваше имя'})+'" value="'+svEsc(sv.name)+'"><button type="button" class="sv-send" id="sv-send">'+L({en:'Send',ru:'Отправить'})+'</button><span class="sv-status" id="sv-status"></span></div>';
+  show();
+}
+function openRole(k,keep){ var e=CP[k]; if(!e||!e.prof)return; if(!keep)openRef={type:'role',id:k}; clearPin(); var pr=e.prof;
+  pin.innerHTML='<div class="kicker">'+L({en:'Role · to define & find',ru:'Роль · определить и найти'})+' · <span class="pers-back" data-go-pers="1">'+L(UI.allPers)+'</span></div>'
+    +'<h2>'+e.n+'</h2><div class="role">'+L(e.r)+'</div>'
+    +'<dl>'
+    +(pr.purpose?'<dt>'+L({en:'What the role is for',ru:'Для чего эта роль'})+'</dt><dd>'+L(pr.purpose)+'</dd>':'')
+    +(pr.reveal?'<dt>'+L({en:'What they could reveal about Jim',ru:'Что может раскрыть о Джиме'})+'</dt><dd>'+L(pr.reveal)+'</dd>':'')
+    +(pr.find?'<dt>'+L({en:'How to find them — options',ru:'Как найти — варианты'})+'</dt><dd>'+L(pr.find)+'</dd>':'')
+    +'</dl>';
   show();
 }
 function openMemory(k,keep){ var e=MEM[k]; if(!e)return; if(!keep)openRef={type:'memory',id:k}; clearPin();
@@ -1971,6 +1988,7 @@ pin.addEventListener('click',e=>{
   const ga=e.target.closest('[data-go-allscenes]'); if(ga){openAllScenes();return;}
   const gp=e.target.closest('[data-go-pers]'); if(gp){openPersonalities();return;}
   const gm=e.target.closest('[data-mem]'); if(gm){openMemory(gm.dataset.mem);return;}
+  const gr=e.target.closest('[data-cprof]'); if(gr){openRole(gr.dataset.cprof);return;}
   const gb=e.target.closest('[data-go-beat]'); if(gb){openBeat(+gb.dataset.goBeat);return;}
   const gs=e.target.closest('[data-go-scene]'); if(gs){openScene(+gs.dataset.goScene);return;}
   const g=e.target.closest('[data-go]'); if(g)openSpeaker(g.dataset.go);
