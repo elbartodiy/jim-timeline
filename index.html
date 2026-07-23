@@ -601,7 +601,7 @@
 <script>
 let lang = "en";
 function L(v){ return (v && typeof v==="object" && ("en" in v)) ? (v[lang]||v.en) : v; }
-function jimAge(y){ var s=String(y); var ms=s.match(/(\d{4})/); if(!ms) return ''; var start=+ms[1], sa=start-1945; if(sa<0) return ''; var rest=s.slice(s.indexOf(ms[1])+4); var me=rest.match(/^\s*[–—-]\s*(\d{2,4})/); var lbl=''+sa; if(me){ var e=me[1], ey=e.length===4?+e:(start-start%100+ +e); if(ey<start)ey+=100; var ea=ey-1945; if(ea!==sa)lbl=sa+'–'+ea; } return lang==='ru' ? (' · '+lbl+' л.') : (' · age '+lbl); }
+function jimAge(y){ var s=String(y); var ms=s.match(/(\d{4})/); if(!ms) return ''; var start=+ms[1], sa=start-1945; if(sa<0) return ''; var rest=s.slice(s.indexOf(ms[1])+4); var me=rest.match(/^\s*[–—-]\s*(\d{2,4})/); var lbl=''+sa, rng=false; if(me){ var e=me[1], ey=e.length===4?+e:(start-start%100+ +e); if(ey<start)ey+=100; var ea=ey-1945; if(ea!==sa){ lbl=sa+'–'+ea; rng=true; } } if(lang!=='ru') return ' · age '+lbl; var w; if(rng){ w='лет'; } else { var b=sa%10, h=sa%100; w=(h>=11&&h<=14)?'лет':(b===1?'год':((b>=2&&b<=4)?'года':'лет')); } return ' · '+lbl+' '+w; }
 
 const AIMOS_LOGO="aimos-logo.jpg";
 const UI = {
